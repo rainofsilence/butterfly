@@ -7,7 +7,7 @@ package cn.silence.butterfly.core.util;
  * @version 1.0.0
  * @since 2023/4/17 08:19
  */
-public class StringUtils {
+public final class StringUtils {
 
     public static boolean isEmpty(String str) {
         return str == null || str.trim().length() == 0;

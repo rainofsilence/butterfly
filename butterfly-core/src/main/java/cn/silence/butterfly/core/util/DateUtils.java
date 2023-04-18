@@ -14,7 +14,7 @@ import java.time.temporal.TemporalAccessor;
  * @date 2023/04/17 22:52:16
  * @desc
  */
-public class DateUtils {
+public final class DateUtils {
 
     public static DateTimeFormatter defaultDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     public static DateTimeFormatter defaultTimeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
