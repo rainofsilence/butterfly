@@ -19,12 +19,12 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BizException.class)
     public BaseResponse<?> bizExceptionHandler(BizException e) {
         log.error("bizException: errorCode={}, errorMessage={}", e.getErrorCode(), e.getMessage());
-        return new BaseResponse<>(e.getErrorCode(), e.getMessage());
+        return BaseResponse.of(e.getErrorCode(), e.getMessage());
     }
 
     @ExceptionHandler(RuntimeException.class)
     public BaseResponse<?> runtimeExceptionHandler(RuntimeException e) {
         log.error("runtimeException", e);
-        return new BaseResponse<>(ErrorCode.SERVER_ERROR.getCode(), e.getMessage());
+        return BaseResponse.of(ErrorCode.SERVER_ERROR.getCode(), e.getMessage());
     }
 }
