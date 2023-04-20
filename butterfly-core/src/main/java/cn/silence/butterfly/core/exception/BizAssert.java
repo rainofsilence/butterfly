@@ -49,12 +49,12 @@ public final class BizAssert {
     /**
      * 断言对象不为空
      *
-     * @param object 对象
-     * @param msg    不满足断言的异常信息
+     * @param object  对象
+     * @param message 不满足断言的异常信息
      */
-    public static void notNull(Object object, String msg) {
+    public static void notNull(Object object, String message) {
         if (object == null) {
-            throw newException(msg);
+            throw newException(message);
         }
     }
 
@@ -116,11 +116,11 @@ public final class BizAssert {
     /**
      * 断言字符串不为空
      *
-     * @param str 字符串
-     * @param msg 不满足断言的异常信息
+     * @param str     字符串
+     * @param message 不满足断言的异常信息
      */
-    public static void notEmpty(String str, String msg) {
-        isTrue(!StringUtils.isEmpty(str), msg);
+    public static void notEmpty(String str, String message) {
+        isTrue(!StringUtils.isEmpty(str), message);
     }
 
     /**
@@ -147,10 +147,10 @@ public final class BizAssert {
      * 断言集合不为空
      *
      * @param collection 集合
-     * @param msg        不满足断言的异常信息
+     * @param message    不满足断言的异常信息
      */
-    public static void notEmpty(Collection<?> collection, String msg) {
-        isTrue(CollectionUtils.isNotEmpty(collection), msg);
+    public static void notEmpty(Collection<?> collection, String message) {
+        isTrue(CollectionUtils.isNotEmpty(collection), message);
     }
 
     /**
@@ -176,11 +176,11 @@ public final class BizAssert {
     /**
      * 断言map不为空
      *
-     * @param map map
-     * @param msg 不满足断言的异常信息
+     * @param map     map
+     * @param message 不满足断言的异常信息
      */
-    public static void notEmpty(Map<?, ?> map, String msg) {
-        isTrue(!MapUtils.isEmpty(map), msg);
+    public static void notEmpty(Map<?, ?> map, String message) {
+        isTrue(!MapUtils.isEmpty(map), message);
     }
 
     /**
@@ -207,10 +207,10 @@ public final class BizAssert {
      * 断言集合为空
      *
      * @param collection 集合
-     * @param msg        不满足断言的异常信息
+     * @param message    不满足断言的异常信息
      */
-    public static void empty(Collection<?> collection, String msg) {
-        isTrue(CollectionUtils.isEmpty(collection), msg);
+    public static void empty(Collection<?> collection, String message) {
+        isTrue(CollectionUtils.isEmpty(collection), message);
     }
 
     /**
@@ -236,12 +236,12 @@ public final class BizAssert {
     /**
      * 断言两个对象必须相等
      *
-     * @param o1  对象1
-     * @param o2  对象2
-     * @param msg 错误消息
+     * @param o1      对象1
+     * @param o2      对象2
+     * @param message 错误消息
      */
-    public static void equals(Object o1, Object o2, String msg) {
-        isTrue(Objects.equals(o1, o2), msg);
+    public static void equals(Object o1, Object o2, String message) {
+        isTrue(Objects.equals(o1, o2), message);
     }
 
     /**
@@ -270,12 +270,12 @@ public final class BizAssert {
     /**
      * 断言两个对象不相等
      *
-     * @param o1  对象1
-     * @param o2  对象2
-     * @param msg 错误消息
+     * @param o1      对象1
+     * @param o2      对象2
+     * @param message 错误消息
      */
-    public static void notEquals(Object o1, Object o2, String msg) {
-        isTrue(!Objects.equals(o1, o2), msg);
+    public static void notEquals(Object o1, Object o2, String message) {
+        isTrue(!Objects.equals(o1, o2), message);
     }
 
     /**
@@ -303,12 +303,12 @@ public final class BizAssert {
     /**
      * 断言对象数组包含指定元素
      *
-     * @param o1   对象1
-     * @param objs 对象2
-     * @param msg  错误消息
+     * @param o1      对象1
+     * @param objs    对象2
+     * @param message 错误消息
      */
-    public static <T> void contains(T o1, T[] objs, String msg) {
-        isTrue(ArrayUtils.contains(objs, o1), msg);
+    public static <T> void contains(T o1, T[] objs, String message) {
+        isTrue(ArrayUtils.contains(objs, o1), message);
     }
 
     /**
