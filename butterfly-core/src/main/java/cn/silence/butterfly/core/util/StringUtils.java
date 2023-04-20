@@ -13,6 +13,17 @@ public final class StringUtils {
         return str == null || str.trim().length() == 0;
     }
 
+    public static boolean isBlank(String str) {
+        if (str==null) return true;
+        int strLen = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (!Character.isWhitespace(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * 驼峰字符串转下划线字符串
      *

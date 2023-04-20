@@ -21,4 +21,9 @@ public interface PatternConst {
      * 汉字，包含〇以及（）
      */
     String CHINESE = "^[\\u4e00-\\u9fa5〇（）]+$";
+
+    /**
+     * 邮箱
+     */
+    String EMAIL = "^\\w+([-+./]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
 }
