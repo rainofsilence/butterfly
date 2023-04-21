@@ -17,6 +17,7 @@
     </modules>
     <packaging>pom</packaging>
     <properties>
+        <skipTests>true</skipTests>
         <java.version>11</java.version>
         <revision>1.0.0-SNAPSHOT</revision>
         <maven.compiler.source>11</maven.compiler.source>
@@ -27,6 +28,7 @@
         <springboot.version>2.7.10</springboot.version>
         <lombok.version>1.18.26</lombok.version>
         <fastjson.version>2.0.28</fastjson.version>
+        <dozer.version>6.5.2</dozer.version>
     </properties>
     <dependencies>
         <dependency>
@@ -66,6 +68,11 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.dozermapper</groupId>
+                <artifactId>dozer-core</artifactId>
+                <version>${dozer.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
