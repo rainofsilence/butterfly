@@ -15,6 +15,9 @@ public class ValidatorUtils {
 
     public static Pattern emailPattern = Pattern.compile(PatternConst.EMAIL);
 
+    /**
+     * 限制创建实例
+     */
     private ValidatorUtils() {
     }
 

@@ -13,6 +13,11 @@ import static java.util.Collections.emptySet;
  */
 public final class CollectionUtils {
 
+    /**
+     * 限制创建实例
+     */
+    private CollectionUtils() {
+    }
 
     /**
      * 判断集合是否为空

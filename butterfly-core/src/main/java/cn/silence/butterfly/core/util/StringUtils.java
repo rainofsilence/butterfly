@@ -9,6 +9,12 @@ package cn.silence.butterfly.core.util;
  */
 public final class StringUtils {
 
+    /**
+     * 限制创建实例
+     */
+    private StringUtils() {
+    }
+
     public static boolean isEmpty(String str) {
         return str == null || str.trim().length() == 0;
     }

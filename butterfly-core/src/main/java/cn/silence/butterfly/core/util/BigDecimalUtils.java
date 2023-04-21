@@ -12,6 +12,12 @@ import java.math.BigDecimal;
 public class BigDecimalUtils {
 
     /**
+     * 限制创建实例
+     */
+    private BigDecimalUtils() {
+    }
+
+    /**
      * 判断value是否在[最小值, 最小值]范围之内。<br/>
      * 如果最大值为null，则比较value是否大于等于最小值 <br/>
      * 反之最小值为null，则比较values是否小于等于最大值

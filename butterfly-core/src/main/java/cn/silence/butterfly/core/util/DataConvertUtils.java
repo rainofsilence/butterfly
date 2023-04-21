@@ -11,6 +11,9 @@ import java.math.BigDecimal;
  */
 public class DataConvertUtils {
 
+    /**
+     * 限制创建实例
+     */
     private DataConvertUtils() {
     }
 
