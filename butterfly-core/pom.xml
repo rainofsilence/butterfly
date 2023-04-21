@@ -12,6 +12,13 @@
 
     <artifactId>butterfly-core</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+    </dependencies>
+
     <properties>
 
     </properties>

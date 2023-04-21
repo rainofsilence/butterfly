@@ -26,6 +26,7 @@
         <dockerfile.plugin.version>1.4.10</dockerfile.plugin.version>
         <springboot.version>2.7.10</springboot.version>
         <lombok.version>1.18.26</lombok.version>
+        <fastjson.version>2.0.28</fastjson.version>
     </properties>
     <dependencies>
         <dependency>
@@ -60,6 +61,11 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
