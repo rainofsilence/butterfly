@@ -2,20 +2,24 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.7.10</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>cn.silence</groupId>
     <artifactId>butterfly</artifactId>
+    <packaging>pom</packaging>
     <version>${revision}</version>
+
     <modules>
         <module>butterfly-core</module>
         <module>butterfly-web</module>
     </modules>
-    <packaging>pom</packaging>
+
     <properties>
         <skipTests>true</skipTests>
         <java.version>11</java.version>
@@ -30,16 +34,25 @@
         <fastjson.version>2.0.28</fastjson.version>
         <dozer.version>6.5.2</dozer.version>
     </properties>
+
     <dependencies>
+        <!--全局依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>
