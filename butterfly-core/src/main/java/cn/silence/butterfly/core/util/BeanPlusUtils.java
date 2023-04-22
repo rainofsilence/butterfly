@@ -14,9 +14,9 @@ import java.util.stream.Collectors;
  * @version 1.0.0
  * @since 2023/04/21 23:37:10
  */
-public class BeanUtils {
+public class BeanPlusUtils {
 
-    private BeanUtils() {
+    private BeanPlusUtils() {
     }
 
     /**
@@ -38,7 +38,7 @@ public class BeanUtils {
      * @return maps
      */
     public static List<Map<String, Object>> beans2Maps(Collection<?> beans) {
-        return beans.stream().map(BeanUtils::bean2Map).collect(Collectors.toList());
+        return beans.stream().map(BeanPlusUtils::bean2Map).collect(Collectors.toList());
     }
 
     /**

@@ -1,5 +1,3 @@
 #日志
 logging:
-  level:
-    root: INFO
-    cn.cn.silence: DEBUG
+  config: classpath:logback-spring.xml

@@ -1,5 +1,6 @@
 package cn.silence.butterfly.core.util;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 class ValidatorUtilsTest {
 
     @Test
+    @Tag("success")
     void isMobile() {
         System.out.println(ValidatorUtils.isMobile("13333333333"));
         System.out.println(ValidatorUtils.isMobile("133333333331"));
@@ -17,6 +19,7 @@ class ValidatorUtilsTest {
     }
 
     @Test
+    @Tag("success")
     void isEmail() {
         System.out.println(ValidatorUtils.isEmail("hello"));
         System.out.println(ValidatorUtils.isEmail("hello@163.com"));

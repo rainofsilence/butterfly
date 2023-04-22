@@ -1,5 +1,6 @@
 package cn.silence.butterfly.core.util;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.Test;
 class DataConvertUtilsTest {
 
     @Test
+    @Tag("success")
     void testToString() {
         String s = null;
         Float f = null;
@@ -18,12 +20,14 @@ class DataConvertUtilsTest {
     }
 
     @Test
+    @Tag("success")
     void testToInt() {
         System.out.println(DataConvertUtils.toInt(null));
         System.out.println(DataConvertUtils.toInt("11"));
     }
 
     @Test
+    @Tag("success")
     void testToBigDecimal() {
         System.out.println(DataConvertUtils.toBigDecimal("20.00"));
     }

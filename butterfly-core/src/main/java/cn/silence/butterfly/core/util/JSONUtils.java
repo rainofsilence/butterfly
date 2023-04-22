@@ -10,9 +10,9 @@ import java.util.Map;
  * @version 1.0.0
  * @since 2023/4/21 17:13
  */
-public class JsonUtils {
+public class JSONUtils {
 
-    private JsonUtils() {
+    private JSONUtils() {
     }
 
     /**

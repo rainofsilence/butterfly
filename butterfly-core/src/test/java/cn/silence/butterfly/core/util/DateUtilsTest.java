@@ -1,5 +1,6 @@
 package cn.silence.butterfly.core.util;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 class DateUtilsTest {
 
     @Test
+    @Tag("success")
     void formatDate() {
         String dateTimeStr = DateUtils.formatDate(LocalDateTime.now(), "yyyy/MM/dd HH:mm:ss");
         System.out.println(dateTimeStr);

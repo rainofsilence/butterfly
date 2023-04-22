@@ -44,7 +44,7 @@ public class HttpUtils {
      * @return response
      */
     public static <T> T get(String url, Class<T> type) {
-        return JsonUtils.parseObject(get(url), type);
+        return JSONUtils.parseObject(get(url), type);
     }
 
     /**
@@ -67,7 +67,7 @@ public class HttpUtils {
      * @return response
      */
     public static <T> T get(String url, Object params, Class<T> type) {
-        return JsonUtils.parseObject(get(url, params), type);
+        return JSONUtils.parseObject(get(url, params), type);
     }
 
     /**
@@ -99,7 +99,7 @@ public class HttpUtils {
      * @return response
      */
     public static String postJson(String url, Object jsonBody) {
-        return postJson(url, JsonUtils.toJSONString(jsonBody));
+        return postJson(url, JSONUtils.toJSONString(jsonBody));
     }
 
     /**
@@ -110,7 +110,7 @@ public class HttpUtils {
      * @return response
      */
     public static <T> T postJson(String url, Object jsonBody, Class<T> type) {
-        return JsonUtils.parseObject(postJson(url, jsonBody), type);
+        return JSONUtils.parseObject(postJson(url, jsonBody), type);
     }
 
 
@@ -129,7 +129,7 @@ public class HttpUtils {
         if (ObjectUtils.isMap(params)) {
             paramMap = (Map<String, Object>) params;
         } else {
-            paramMap = BeanUtils.bean2Map(params);
+            paramMap = BeanPlusUtils.bean2Map(params);
         }
         var sb = new StringBuilder("?");
         boolean isFirst = true;

@@ -1,5 +1,6 @@
 package cn.silence.butterfly.core.util;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 class BigDecimalUtilsTest {
 
     @Test
+    @Tag("success")
     void between() {
         System.out.println(BigDecimalUtils.between(BigDecimal.TEN,BigDecimal.ZERO,BigDecimal.ONE));
         System.out.println(BigDecimalUtils.between(BigDecimal.ONE,BigDecimal.ZERO,BigDecimal.TEN));

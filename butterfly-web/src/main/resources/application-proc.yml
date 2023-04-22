@@ -1,5 +1,0 @@
-#日志
-logging:
-  level:
-    root: INFO
-    cn.cn.silence: DEBUG
