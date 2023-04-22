@@ -8,8 +8,7 @@
         <property name="LOG_PATH" value="./logs/${APP_NAME}"/>
     </springProfile>
     <springProfile name="prod">
-<!--        <property name="LOG_PATH" value="/usr/local/java/logs/${APP_NAME}"/>-->
-        <property name="LOG_PATH" value="./logs/${APP_NAME}"/>
+        <property name="LOG_PATH" value="/usr/local/java/logs/${APP_NAME}"/>
     </springProfile>
 
     <!--    日志文件名-->
