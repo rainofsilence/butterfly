@@ -9,8 +9,25 @@ package cn.silence.butterfly.core.util;
  */
 public final class StringUtils {
 
+    /**
+     * 限制创建实例
+     */
+    private StringUtils() {
+    }
+
     public static boolean isEmpty(String str) {
         return str == null || str.trim().length() == 0;
+    }
+
+    public static boolean isBlank(String str) {
+        if (str==null) return true;
+        int strLen = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (!Character.isWhitespace(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**

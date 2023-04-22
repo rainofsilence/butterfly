@@ -10,6 +10,11 @@ import java.util.Map;
  */
 public final class MapUtils {
 
+    /**
+     * 限制创建实例
+     */
+    private MapUtils() {
+    }
 
     /**
      * 判断map是否为空

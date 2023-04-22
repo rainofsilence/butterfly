@@ -12,6 +12,12 @@ import java.util.UUID;
 public class UUIDUtils {
 
     /**
+     * 限制创建实例
+     */
+    private UUIDUtils() {
+    }
+
+    /**
      * 生成 UUID，并去除横线
      *
      * @return UUID

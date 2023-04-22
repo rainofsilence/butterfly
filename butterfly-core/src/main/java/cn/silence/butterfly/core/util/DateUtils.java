@@ -16,6 +16,12 @@ import java.time.temporal.TemporalAccessor;
  */
 public final class DateUtils {
 
+    /**
+     * 限制创建实例
+     */
+    private DateUtils() {
+    }
+
     public static DateTimeFormatter defaultDateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     public static DateTimeFormatter defaultTimeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
     public static DateTimeFormatter defaultDateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

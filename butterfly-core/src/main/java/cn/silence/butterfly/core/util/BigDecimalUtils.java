@@ -1,6 +1,5 @@
 package cn.silence.butterfly.core.util;
 
-import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
 
@@ -10,6 +9,12 @@ import java.math.BigDecimal;
  * @since 2023/4/20 08:22
  */
 public class BigDecimalUtils {
+
+    /**
+     * 限制创建实例
+     */
+    private BigDecimalUtils() {
+    }
 
     /**
      * 判断value是否在[最小值, 最小值]范围之内。<br/>

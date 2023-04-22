@@ -1,5 +1,6 @@
 package cn.silence.butterfly.core.util;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,11 +11,13 @@ import org.junit.jupiter.api.Test;
 class StringUtilsTest {
 
     @Test
+    @Tag("success")
     void camel2Underscore() {
         System.out.println(StringUtils.camel2Underscore("HelloWorld"));
     }
 
     @Test
+    @Tag("success")
     void convertCamel() {
         System.out.println(StringUtils.convertCamel("HelloWorld",'-'));
     }

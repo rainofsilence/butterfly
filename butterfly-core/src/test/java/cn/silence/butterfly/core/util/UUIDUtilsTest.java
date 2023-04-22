@@ -1,5 +1,6 @@
 package cn.silence.butterfly.core.util;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.Test;
 class UUIDUtilsTest {
 
     @Test
+    @Tag("success")
     void generateUUIDWithPrefix() {
         String uuid = UUIDUtils.generate32UUID();
         System.out.println(uuid);

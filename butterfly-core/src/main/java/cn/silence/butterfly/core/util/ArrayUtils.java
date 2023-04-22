@@ -10,6 +10,12 @@ import java.util.Objects;
 public class ArrayUtils {
 
     /**
+     * 限制创建实例
+     */
+    private ArrayUtils() {
+    }
+
+    /**
      * 是否为空
      *
      * @param array 数组类型
