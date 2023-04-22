@@ -33,5 +33,5 @@ docker login -u user -p pwd "$docker_registry"
 # 下载镜像
 docker pull "$imageName"
 # 启动容器
-docker run -itd --name "$project_name" --network mayfly-net -p80:8080 "$imageName"
+docker run -itd --name "$project_name" --network butterfly-net -p80:8081 "$imageName"
 echo "容器启动成功"
