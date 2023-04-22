@@ -12,15 +12,14 @@
 
     <artifactId>butterfly-core</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.github.dozermapper</groupId>
-            <artifactId>dozer-core</artifactId>
-        </dependency>
-    </dependencies>
-
     <properties>
 
     </properties>
+
+    <dependencies>
+
+    </dependencies>
+
+
 
 </project>

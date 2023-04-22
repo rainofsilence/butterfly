@@ -1,12 +1,12 @@
 package cn.silence.butterfly.core.util;
 
-import com.github.dozermapper.core.DozerBeanMapperBuilder;
-import com.github.dozermapper.core.Mapper;
-
 import java.beans.IntrospectionException;
 import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -17,23 +17,6 @@ import java.util.stream.Collectors;
 public class BeanUtils {
 
     private BeanUtils() {
-    }
-
-    private static final Mapper DEFAULT_MAPPER = DozerBeanMapperBuilder.buildDefault();
-
-    public static void copy(Object source, Object target) {
-        if (source == null) return;
-        DEFAULT_MAPPER.map(source, target);
-    }
-
-    public static <T> T copy(Object source, Class<T> targetClass) {
-        if (source == null) return null;
-        return DEFAULT_MAPPER.map(source, targetClass);
-    }
-
-    public static <T> List<T> copy(List<?> source, Class<T> targetClass) {
-        if (CollectionUtils.isEmpty(source)) return Collections.emptyList();
-        return source.stream().map(s -> copy(s, targetClass)).collect(Collectors.toList());
     }
 
     /**
