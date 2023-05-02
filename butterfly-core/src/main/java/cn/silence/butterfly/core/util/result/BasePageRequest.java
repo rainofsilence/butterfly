@@ -19,6 +19,8 @@ public class BasePageRequest extends BaseRequest {
 
     private Integer pageSize = 10;
 
+    private String orderByClause;
+
     public Integer getPageNum() {
         return pageNum;
     }
@@ -35,11 +37,20 @@ public class BasePageRequest extends BaseRequest {
         this.pageSize = pageSize;
     }
 
+    public String getOrderByClause() {
+        return orderByClause;
+    }
+
+    public void setOrderByClause(String orderByClause) {
+        this.orderByClause = orderByClause;
+    }
+
     @Override
     public String toString() {
-        return "PageQuery{" +
+        return "BasePageRequest{" +
                 "pageNum=" + pageNum +
                 ", pageSize=" + pageSize +
+                ", orderByClause='" + orderByClause + '\'' +
                 '}';
     }
 }

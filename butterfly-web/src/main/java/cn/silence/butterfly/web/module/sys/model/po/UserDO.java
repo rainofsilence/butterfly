@@ -12,6 +12,8 @@ public class UserDO implements Serializable {
 
     private String nickname;
 
+    private String orderByClause;
+
     public String getNickname() {
         return nickname;
     }
@@ -20,10 +22,19 @@ public class UserDO implements Serializable {
         this.nickname = nickname;
     }
 
+    public String getOrderByClause() {
+        return orderByClause;
+    }
+
+    public void setOrderByClause(String orderByClause) {
+        this.orderByClause = orderByClause;
+    }
+
     @Override
     public String toString() {
         return "UserDO{" +
                 "nickname='" + nickname + '\'' +
+                ", orderByClause='" + orderByClause + '\'' +
                 '}';
     }
 }
