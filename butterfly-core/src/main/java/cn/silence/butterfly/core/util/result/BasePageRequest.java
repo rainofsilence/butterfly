@@ -15,10 +15,19 @@ public class BasePageRequest extends BaseRequest {
      */
     public static final int MAX_PAGE_SIZE = 50;
 
+    /**
+     * 页码
+     */
     private Integer pageNum = 1;
 
+    /**
+     * 每页数据量
+     */
     private Integer pageSize = 10;
 
+    /**
+     * 排序 {@code "field asc"}
+     */
     private String orderByClause;
 
     public Integer getPageNum() {
