@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.silence.butterfly.web.module.sys.mapper.EnumInfoMapper">
+
+    <resultMap id="BaseResultMap" type="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo">
+            <id property="id" column="id" jdbcType="VARCHAR"/>
+            <result property="enumNo" column="enum_no" jdbcType="VARCHAR"/>
+            <result property="enumName" column="enum_name" jdbcType="VARCHAR"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+            <result property="sortNo" column="sort_no" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,enum_no,enum_name,
+        remark,sort_no
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from enum_info
+        where  id = #{id,jdbcType=VARCHAR} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from enum_info
+        where  id = #{id,jdbcType=VARCHAR} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo" useGeneratedKeys="true">
+        insert into enum_info
+        ( id,enum_no,enum_name
+        ,remark,sort_no)
+        values (#{id,jdbcType=VARCHAR},#{enumNo,jdbcType=VARCHAR},#{enumName,jdbcType=VARCHAR}
+        ,#{remark,jdbcType=VARCHAR},#{sortNo,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo" useGeneratedKeys="true">
+        insert into enum_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="enumNo != null">enum_no,</if>
+                <if test="enumName != null">enum_name,</if>
+                <if test="remark != null">remark,</if>
+                <if test="sortNo != null">sort_no,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=VARCHAR},</if>
+                <if test="enumNo != null">#{enumNo,jdbcType=VARCHAR},</if>
+                <if test="enumName != null">#{enumName,jdbcType=VARCHAR},</if>
+                <if test="remark != null">#{remark,jdbcType=VARCHAR},</if>
+                <if test="sortNo != null">#{sortNo,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo">
+        update enum_info
+        <set>
+                <if test="enumNo != null">
+                    enum_no = #{enumNo,jdbcType=VARCHAR},
+                </if>
+                <if test="enumName != null">
+                    enum_name = #{enumName,jdbcType=VARCHAR},
+                </if>
+                <if test="remark != null">
+                    remark = #{remark,jdbcType=VARCHAR},
+                </if>
+                <if test="sortNo != null">
+                    sort_no = #{sortNo,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=VARCHAR} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo">
+        update enum_info
+        set 
+            enum_no =  #{enumNo,jdbcType=VARCHAR},
+            enum_name =  #{enumName,jdbcType=VARCHAR},
+            remark =  #{remark,jdbcType=VARCHAR},
+            sort_no =  #{sortNo,jdbcType=VARCHAR}
+        where   id = #{id,jdbcType=VARCHAR} 
+    </update>
+</mapper>

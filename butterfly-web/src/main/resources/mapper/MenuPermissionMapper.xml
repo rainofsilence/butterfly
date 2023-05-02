@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.silence.butterfly.web.module.sys.mapper.MenuPermissionMapper">
+
+    <resultMap id="BaseResultMap" type="cn.silence.butterfly.web.module.sys.model.entity.MenuPermission">
+            <id property="id" column="id" jdbcType="VARCHAR"/>
+            <result property="menuId" column="menu_id" jdbcType="VARCHAR"/>
+            <result property="permission" column="permission" jdbcType="VARCHAR"/>
+            <result property="sortNo" column="sort_no" jdbcType="VARCHAR"/>
+            <result property="remark" column="remark" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,menu_id,permission,
+        sort_no,remark
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from menu_permission
+        where  id = #{id,jdbcType=VARCHAR} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from menu_permission
+        where  id = #{id,jdbcType=VARCHAR} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuPermission" useGeneratedKeys="true">
+        insert into menu_permission
+        ( id,menu_id,permission
+        ,sort_no,remark)
+        values (#{id,jdbcType=VARCHAR},#{menuId,jdbcType=VARCHAR},#{permission,jdbcType=VARCHAR}
+        ,#{sortNo,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuPermission" useGeneratedKeys="true">
+        insert into menu_permission
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="menuId != null">menu_id,</if>
+                <if test="permission != null">permission,</if>
+                <if test="sortNo != null">sort_no,</if>
+                <if test="remark != null">remark,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=VARCHAR},</if>
+                <if test="menuId != null">#{menuId,jdbcType=VARCHAR},</if>
+                <if test="permission != null">#{permission,jdbcType=VARCHAR},</if>
+                <if test="sortNo != null">#{sortNo,jdbcType=VARCHAR},</if>
+                <if test="remark != null">#{remark,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuPermission">
+        update menu_permission
+        <set>
+                <if test="menuId != null">
+                    menu_id = #{menuId,jdbcType=VARCHAR},
+                </if>
+                <if test="permission != null">
+                    permission = #{permission,jdbcType=VARCHAR},
+                </if>
+                <if test="sortNo != null">
+                    sort_no = #{sortNo,jdbcType=VARCHAR},
+                </if>
+                <if test="remark != null">
+                    remark = #{remark,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=VARCHAR} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuPermission">
+        update menu_permission
+        set 
+            menu_id =  #{menuId,jdbcType=VARCHAR},
+            permission =  #{permission,jdbcType=VARCHAR},
+            sort_no =  #{sortNo,jdbcType=VARCHAR},
+            remark =  #{remark,jdbcType=VARCHAR}
+        where   id = #{id,jdbcType=VARCHAR} 
+    </update>
+</mapper>
