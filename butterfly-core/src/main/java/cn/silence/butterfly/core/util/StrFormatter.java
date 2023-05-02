@@ -23,7 +23,7 @@ public class StrFormatter {
      * @return 结果
      */
     public static String format(String strPattern, Object... argArray) {
-        return formatWith(strPattern, StringUtils.EMPTY_JSON, argArray);
+        return formatWith(strPattern, StrUtils.EMPTY_JSON, argArray);
     }
 
     /**
@@ -41,7 +41,7 @@ public class StrFormatter {
      * @return 结果
      */
     public static String formatWith(String strPattern, String placeHolder, Object... argArray) {
-        if (StringUtils.isBlank(strPattern) || StringUtils.isBlank(placeHolder) || ArrayUtils.isEmpty(argArray)) {
+        if (StrUtils.isBlank(strPattern) || StrUtils.isBlank(placeHolder) || ArrayUtils.isEmpty(argArray)) {
             return strPattern;
         }
         final int strPatternLength = strPattern.length();
@@ -64,11 +64,11 @@ public class StrFormatter {
             }
 
             // 转义符
-            if (delimIndex > 0 && strPattern.charAt(delimIndex - 1) == StringUtils.C_BACKSLASH) {// 转义符
-                if (delimIndex > 1 && strPattern.charAt(delimIndex - 2) == StringUtils.C_BACKSLASH) {// 双转义符
+            if (delimIndex > 0 && strPattern.charAt(delimIndex - 1) == StrUtils.C_BACKSLASH) {// 转义符
+                if (delimIndex > 1 && strPattern.charAt(delimIndex - 2) == StrUtils.C_BACKSLASH) {// 双转义符
                     // 转义符之前还有一个转义符，占位符依旧有效
                     sbUF.append(strPattern, handledPosition, delimIndex - 1);
-                    sbUF.append(StringUtils.toUtf8Str(argArray[argIndex]));
+                    sbUF.append(StrUtils.toUtf8Str(argArray[argIndex]));
                     handledPosition = delimIndex + placeHolderLength;
                 } else {
                     // 占位符被转义
@@ -79,7 +79,7 @@ public class StrFormatter {
                 }
             } else {// 正常占位符
                 sbUF.append(strPattern, handledPosition, delimIndex);
-                sbUF.append(StringUtils.toUtf8Str(argArray[argIndex]));
+                sbUF.append(StrUtils.toUtf8Str(argArray[argIndex]));
                 handledPosition = delimIndex + placeHolderLength;
             }
         }
@@ -109,7 +109,7 @@ public class StrFormatter {
         String templateTarget = template.toString();
         String value;
         for (Map.Entry<?, ?> entry : map.entrySet()) {
-            value = StringUtils.toUtf8Str(entry.getValue());
+            value = StrUtils.toUtf8Str(entry.getValue());
             if (null == value && ignoreNull) {
                 continue;
             }

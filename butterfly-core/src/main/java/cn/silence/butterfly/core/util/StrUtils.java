@@ -13,12 +13,12 @@ import java.nio.charset.StandardCharsets;
  * @version 1.0.0
  * @since 2023/4/17 08:19
  */
-public final class StringUtils implements StrPool {
+public final class StrUtils implements StrPool {
 
     /**
      * 限制创建实例
      */
-    private StringUtils() {
+    private StrUtils() {
     }
 
     public static boolean isEmpty(CharSequence cs) {

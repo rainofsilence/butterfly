@@ -18,7 +18,7 @@ public enum ErrorCode implements ErrorCodeMessage {
     /**
      * 参数错误
      */
-    PARAM_ERROR("405", "参数错误"),
+    PARAM_ERROR("405", "param error"),
     /**
      * 资源未找到
      */
@@ -30,7 +30,12 @@ public enum ErrorCode implements ErrorCodeMessage {
     /**
      * 无权限
      */
-    NO_PERMISSION("501", "no permission");
+    NO_PERMISSION("501", "no permission"),
+    /**
+     * 工具类错误
+     */
+    UTIL_ERROR("577", "util error"),
+    ;
 
     /**
      * 结果操作码

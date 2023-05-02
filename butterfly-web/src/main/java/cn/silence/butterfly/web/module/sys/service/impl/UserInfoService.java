@@ -1,7 +1,7 @@
 package cn.silence.butterfly.web.module.sys.service.impl;
 
 import cn.silence.butterfly.core.util.BeanPlusUtils;
-import cn.silence.butterfly.core.util.StringUtils;
+import cn.silence.butterfly.core.util.StrUtils;
 import cn.silence.butterfly.core.util.result.BaseResponse;
 import cn.silence.butterfly.core.util.result.PageResult;
 import cn.silence.butterfly.web.module.sys.mapper.UserInfoMapper;
@@ -35,7 +35,7 @@ public class UserInfoService implements IUserInfoService {
         List<UserInfo> userInfoList = userInfoMapper.selectByUserDO(BeanPlusUtils.copyProperties(pageRequest, UserDO.class));
         PageInfo<UserInfo> userInfoPageInfo = new PageInfo<>(userInfoList);
         List<UserVO> dataList = BeanPlusUtils.copyProperties(userInfoList, UserVO.class).stream().peek(d -> {
-            if (StringUtils.isNotBlank(d.getGender())) {
+            if (StrUtils.isNotBlank(d.getGender())) {
                 // TODO 等Enum方法实现再重构
                 d.setGenderName(d.getGender());
             }
