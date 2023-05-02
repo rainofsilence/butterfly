@@ -19,6 +19,14 @@ class StringUtilsTest {
     @Test
     @Tag("success")
     void convertCamel() {
-        System.out.println(StringUtils.convertCamel("HelloWorld",'-'));
+        System.out.println(StringUtils.convertCamel("HelloWorld", '-'));
+    }
+
+    @Test
+    @Tag("success")
+    void format() {
+        System.out.println(StringUtils.format("This is [{}].", "StringUtils.format"));
+        System.out.println(StringUtils.format("This is [{}]."));
+        System.out.println(StringUtils.format("This is [{}].", null));
     }
 }

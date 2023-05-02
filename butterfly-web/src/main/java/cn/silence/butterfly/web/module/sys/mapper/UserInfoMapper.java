@@ -1,6 +1,9 @@
 package cn.silence.butterfly.web.module.sys.mapper;
 
 import cn.silence.butterfly.web.module.sys.model.entity.UserInfo;
+import cn.silence.butterfly.web.module.sys.model.ido.UserDO;
+
+import java.util.List;
 
 /**
 * @author rainofsilence
@@ -22,4 +25,5 @@ public interface UserInfoMapper {
 
     int updateByPrimaryKey(UserInfo record);
 
+    List<UserInfo> selectByUserDO(UserDO record);
 }
