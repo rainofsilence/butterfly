@@ -1,4 +1,4 @@
-package cn.silence.butterfly.web.module.sys.model.ido;
+package cn.silence.butterfly.web.module.sys.model.po;
 
 import java.io.Serializable;
 

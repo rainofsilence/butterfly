@@ -5,7 +5,7 @@ import cn.silence.butterfly.core.util.result.BaseResponse;
 import cn.silence.butterfly.core.util.result.PageResult;
 import cn.silence.butterfly.web.module.sys.mapper.UserInfoMapper;
 import cn.silence.butterfly.web.module.sys.model.entity.UserInfo;
-import cn.silence.butterfly.web.module.sys.model.ido.UserDO;
+import cn.silence.butterfly.web.module.sys.model.po.UserDO;
 import cn.silence.butterfly.web.module.sys.model.request.UserPageRequest;
 import cn.silence.butterfly.web.module.sys.model.vo.UserVO;
 import cn.silence.butterfly.web.module.sys.service.IUserInfoService;

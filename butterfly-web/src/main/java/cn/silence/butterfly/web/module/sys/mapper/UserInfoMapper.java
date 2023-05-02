@@ -1,7 +1,7 @@
 package cn.silence.butterfly.web.module.sys.mapper;
 
 import cn.silence.butterfly.web.module.sys.model.entity.UserInfo;
-import cn.silence.butterfly.web.module.sys.model.ido.UserDO;
+import cn.silence.butterfly.web.module.sys.model.po.UserDO;
 
 import java.util.List;
 

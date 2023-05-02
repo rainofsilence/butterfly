@@ -7,8 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 
 /**
  * @author rainofsilence
- * @date 2023/4/16 23:40
- * @desc
+ * @since 2023/4/16 23:40
  */
 @SpringBootApplication
 @ComponentScan(basePackages = "cn.silence.butterfly.*")
