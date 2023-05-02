@@ -158,5 +158,8 @@
                 and nickname like concat(#{nickname},'%');
             </if>
         </where>
+        <if test="orderByClause!=null and orderByClause!=''">
+            order by #{orderByClause}
+        </if>
     </select>
 </mapper>

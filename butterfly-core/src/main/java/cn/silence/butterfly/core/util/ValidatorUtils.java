@@ -22,12 +22,12 @@ public class ValidatorUtils {
     }
 
     public static boolean isMobile(String str) {
-        if (StringUtils.isBlank(str)) return false;
+        if (StrUtils.isBlank(str)) return false;
         return mobilePattern.matcher(str).matches();
     }
 
     public static boolean isEmail(String str) {
-        if (StringUtils.isBlank(str)) return false;
+        if (StrUtils.isBlank(str)) return false;
         return emailPattern.matcher(str).matches();
     }
 }

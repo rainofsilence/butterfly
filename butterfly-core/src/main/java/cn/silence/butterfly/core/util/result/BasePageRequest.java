@@ -15,9 +15,20 @@ public class BasePageRequest extends BaseRequest {
      */
     public static final int MAX_PAGE_SIZE = 50;
 
+    /**
+     * 页码
+     */
     private Integer pageNum = 1;
 
+    /**
+     * 每页数据量
+     */
     private Integer pageSize = 10;
+
+    /**
+     * 排序 {@code "field asc"}
+     */
+    private String orderByClause;
 
     public Integer getPageNum() {
         return pageNum;
@@ -35,11 +46,20 @@ public class BasePageRequest extends BaseRequest {
         this.pageSize = pageSize;
     }
 
+    public String getOrderByClause() {
+        return orderByClause;
+    }
+
+    public void setOrderByClause(String orderByClause) {
+        this.orderByClause = orderByClause;
+    }
+
     @Override
     public String toString() {
-        return "PageQuery{" +
+        return "BasePageRequest{" +
                 "pageNum=" + pageNum +
                 ", pageSize=" + pageSize +
+                ", orderByClause='" + orderByClause + '\'' +
                 '}';
     }
 }

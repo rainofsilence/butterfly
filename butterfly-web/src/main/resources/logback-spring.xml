@@ -100,11 +100,11 @@
             <appender-ref ref="STDOUT"/>
         </logger>
 
-        <logger name="com.zaxxer.hikari.HikariConfig" level="info" additivity="false">
+        <logger name="com.zaxxer.hikari" level="info" additivity="false">
             <appender-ref ref="STDOUT"/>
         </logger>
 
-        <logger name="com.zaxxer.hikari.pool.HikariPool" level="info" additivity="false">
+        <logger name="springfox" level="info" additivity="false">
             <appender-ref ref="STDOUT"/>
         </logger>
 

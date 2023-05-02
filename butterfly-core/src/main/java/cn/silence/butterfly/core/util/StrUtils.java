@@ -13,27 +13,35 @@ import java.nio.charset.StandardCharsets;
  * @version 1.0.0
  * @since 2023/4/17 08:19
  */
-public final class StringUtils implements StrPool {
+public final class StrUtils implements StrPool {
 
     /**
      * 限制创建实例
      */
-    private StringUtils() {
+    private StrUtils() {
     }
 
-    public static boolean isEmpty(CharSequence str) {
-        return str == null || str.length() == 0;
+    public static boolean isEmpty(CharSequence cs) {
+        return cs == null || cs.length() == 0;
     }
 
-    public static boolean isBlank(CharSequence str) {
-        if (str == null) return true;
+    public static boolean isBlank(CharSequence cs) {
+        if (cs == null) return true;
         int strLen = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (!Character.isWhitespace(str.charAt(i))) {
+        for (int i = 0; i < cs.length(); i++) {
+            if (!Character.isWhitespace(cs.charAt(i))) {
                 return false;
             }
         }
         return true;
+    }
+
+    public static boolean isNotEmpty(CharSequence cs) {
+        return !isEmpty(cs);
+    }
+
+    public static boolean isNotBlank(CharSequence cs) {
+        return !isBlank(cs);
     }
 
     //-------------------------------------------------------------------------------------------------------------camel
