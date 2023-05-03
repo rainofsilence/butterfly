@@ -83,6 +83,18 @@ public final class BizAssert {
     }
 
     /**
+     * 断言字符串不能为空
+     *
+     * @param str     字符串
+     * @param message 错误信息
+     */
+    public static void notBlank(String str, String message) {
+        if (StrUtils.isBlank(str)) {
+            throw newException(message);
+        }
+    }
+
+    /**
      * 断言对象为空
      *
      * @param object  对象

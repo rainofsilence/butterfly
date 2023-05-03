@@ -1,5 +1,6 @@
 package cn.silence.butterfly.web.module.sys.controller;
 
+import cn.silence.butterfly.core.exception.BizAssert;
 import cn.silence.butterfly.core.util.result.BaseResponse;
 import cn.silence.butterfly.core.util.result.PageResult;
 import cn.silence.butterfly.web.module.sys.model.request.UserPageRequest;
@@ -7,10 +8,7 @@ import cn.silence.butterfly.web.module.sys.model.vo.UserVO;
 import cn.silence.butterfly.web.module.sys.service.IUserInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -19,7 +17,7 @@ import javax.annotation.Resource;
  * @version 1.0.0
  * @since 2023/5/1 16:08
  */
-@Api(tags = "用户管理模块")
+@Api(tags = "User")
 @RestController
 @RequestMapping("/sys/user")
 public class UserInfoController {
@@ -27,9 +25,41 @@ public class UserInfoController {
     @Resource
     private IUserInfoService iUserInfoService;
 
-    @ApiOperation(value = "用户管理-分页查询")
+    @ApiOperation(value = "list")
     @PostMapping("/list")
     public BaseResponse<PageResult<UserVO>> pageList(@RequestBody UserPageRequest pageRequest) {
         return iUserInfoService.pageList(pageRequest);
+    }
+
+    @ApiOperation(value = "getOne")
+    @GetMapping("/{username}")
+    public BaseResponse<UserVO> getOne(@PathVariable String username) {
+        BizAssert.notBlank(username, "username must be not null");
+        return iUserInfoService.getOne(username);
+    }
+
+    @ApiOperation(value = "save")
+    @PostMapping("/")
+    public BaseResponse<String> save(@RequestBody UserVO userVO) {
+        BizAssert.notNull(userVO, "param must be not null");
+        BizAssert.notBlank(userVO.getUsername(), "username must be not null");
+        // TODO
+        return BaseResponse.success("Add success");
+    }
+
+    @ApiOperation(value = "update")
+    @PutMapping("/")
+    public BaseResponse<String> update(@RequestBody UserVO userVO) {
+        BizAssert.notNull(userVO, "param must be not null");
+        BizAssert.notBlank(userVO.getUsername(), "username must be not null");
+        // TODO
+        return BaseResponse.success("Update success");
+    }
+
+    @ApiOperation(value = "delete")
+    @DeleteMapping("/{username}")
+    public BaseResponse<String> delete(@PathVariable String username) {
+        BizAssert.notBlank(username, "username must be not null");
+        return BaseResponse.success("delete success");
     }
 }

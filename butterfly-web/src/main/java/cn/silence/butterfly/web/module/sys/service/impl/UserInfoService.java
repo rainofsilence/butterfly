@@ -42,4 +42,9 @@ public class UserInfoService implements IUserInfoService {
         }).collect(Collectors.toList());
         return PageResult.with(userInfoPageInfo.getTotal(), dataList).toResponse();
     }
+
+    @Override
+    public BaseResponse<UserVO> getOne(String username) {
+        return BaseResponse.success(BeanPlusUtils.copyProperties(userInfoMapper.selectOneByUsername(username), UserVO.class));
+    }
 }

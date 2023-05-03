@@ -152,14 +152,24 @@
         where   id = #{id,jdbcType=VARCHAR} 
     </update>
     <select id="selectByUserDO" resultMap="BaseResultMap">
-        select <include refid="Base_Column_List"/> from user_info
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
         <where>
+            `deleted` = 0
             <if test="nickname!=null and nickname!=''">
-                and nickname like concat(#{nickname},'%');
+                and `nickname` like concat(#{nickname},'%');
             </if>
         </where>
         <if test="orderByClause!=null and orderByClause!=''">
             order by #{orderByClause}
         </if>
+    </select>
+    <select id="selectOneByUsername" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        where `username` = #{username} and `deleted` = 0
+        limit 1
     </select>
 </mapper>

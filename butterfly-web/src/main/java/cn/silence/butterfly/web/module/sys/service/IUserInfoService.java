@@ -13,4 +13,6 @@ import cn.silence.butterfly.web.module.sys.model.vo.UserVO;
 public interface IUserInfoService {
 
     BaseResponse<PageResult<UserVO>> pageList(UserPageRequest pageRequest);
+
+    BaseResponse<UserVO> getOne(String username);
 }
