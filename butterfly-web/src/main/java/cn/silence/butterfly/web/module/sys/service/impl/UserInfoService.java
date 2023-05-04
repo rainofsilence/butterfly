@@ -47,4 +47,22 @@ public class UserInfoService implements IUserInfoService {
     public BaseResponse<UserVO> getOne(String username) {
         return BaseResponse.success(BeanPlusUtils.copyProperties(userInfoMapper.selectOneByUsername(username), UserVO.class));
     }
+
+    @Override
+    public BaseResponse<String> insert(UserVO userVO) {
+        // TODO
+        return null;
+    }
+
+    @Override
+    public BaseResponse<String> update(UserVO userVO) {
+        // TODO
+        return null;
+    }
+
+    @Override
+    public BaseResponse<String> delete(String username) {
+        // TODO
+        return null;
+    }
 }

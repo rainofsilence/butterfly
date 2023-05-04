@@ -37,3 +37,4 @@ build/
 logs/
 
 uncommits/
+butterfly-web/src/test/java/generator/

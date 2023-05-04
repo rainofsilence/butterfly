@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
  * @version 1.0.0
  * @since 2023/05/03 22:53:22
  */
-public class EnumGeneratorTest {
+class EnumGeneratorTest {
 
     /**
      * 通过 CSV 文件自动生成系统枚举值插入语句

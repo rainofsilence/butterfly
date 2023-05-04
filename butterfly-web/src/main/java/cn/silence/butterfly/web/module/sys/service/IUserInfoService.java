@@ -15,4 +15,10 @@ public interface IUserInfoService {
     BaseResponse<PageResult<UserVO>> pageList(UserPageRequest pageRequest);
 
     BaseResponse<UserVO> getOne(String username);
+
+    BaseResponse<String> insert(UserVO userVO);
+
+    BaseResponse<String> update(UserVO userVO);
+
+    BaseResponse<String> delete(String username);
 }

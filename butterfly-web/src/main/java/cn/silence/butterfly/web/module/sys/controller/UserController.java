@@ -20,7 +20,7 @@ import javax.annotation.Resource;
 @Api(tags = "User")
 @RestController
 @RequestMapping("/sys/user")
-public class UserInfoController {
+public class UserController {
 
     @Resource
     private IUserInfoService iUserInfoService;
@@ -43,8 +43,7 @@ public class UserInfoController {
     public BaseResponse<String> save(@RequestBody UserVO userVO) {
         BizAssert.notNull(userVO, "param must be not null");
         BizAssert.notBlank(userVO.getUsername(), "username must be not null");
-        // TODO
-        return BaseResponse.success("Add success");
+        return iUserInfoService.insert(userVO);
     }
 
     @ApiOperation(value = "update")
@@ -52,14 +51,13 @@ public class UserInfoController {
     public BaseResponse<String> update(@RequestBody UserVO userVO) {
         BizAssert.notNull(userVO, "param must be not null");
         BizAssert.notBlank(userVO.getUsername(), "username must be not null");
-        // TODO
-        return BaseResponse.success("Update success");
+        return iUserInfoService.update(userVO);
     }
 
     @ApiOperation(value = "delete")
     @DeleteMapping("/{username}")
     public BaseResponse<String> delete(@PathVariable String username) {
         BizAssert.notBlank(username, "username must be not null");
-        return BaseResponse.success("delete success");
+        return iUserInfoService.delete(username);
     }
 }
