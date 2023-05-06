@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.silence.butterfly.web.module.sys.mapper.UserInfoMapper">
+
+    <resultMap id="BaseResultMap" type="cn.silence.butterfly.web.module.sys.model.entity.UserInfo">
+            <id property="id" column="id" jdbcType="VARCHAR"/>
+            <result property="nickname" column="nickname" jdbcType="VARCHAR"/>
+            <result property="username" column="username" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="realName" column="real_name" jdbcType="VARCHAR"/>
+            <result property="certType" column="cert_type" jdbcType="VARCHAR"/>
+            <result property="certId" column="cert_id" jdbcType="VARCHAR"/>
+            <result property="gender" column="gender" jdbcType="VARCHAR"/>
+            <result property="inuse" column="inuse" jdbcType="TINYINT"/>
+            <result property="locked" column="locked" jdbcType="TINYINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+            <result property="deleteTime" column="delete_time" jdbcType="TIMESTAMP"/>
+            <result property="deleted" column="deleted" jdbcType="TINYINT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,nickname,username,
+        password,real_name,cert_type,
+        cert_id,gender,inuse,
+        locked,create_time,update_time,
+        delete_time,deleted
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from user_info
+        where  id = #{id,jdbcType=VARCHAR} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from user_info
+        where  id = #{id,jdbcType=VARCHAR} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.silence.butterfly.web.module.sys.model.entity.UserInfo" useGeneratedKeys="true">
+        insert into user_info
+        ( id,nickname,username
+        ,password,real_name,cert_type
+        ,cert_id,gender,inuse
+        ,locked,create_time,update_time
+        ,delete_time,deleted)
+        values (#{id,jdbcType=VARCHAR},#{nickname,jdbcType=VARCHAR},#{username,jdbcType=VARCHAR}
+        ,#{password,jdbcType=VARCHAR},#{realName,jdbcType=VARCHAR},#{certType,jdbcType=VARCHAR}
+        ,#{certId,jdbcType=VARCHAR},#{gender,jdbcType=VARCHAR},#{inuse,jdbcType=TINYINT}
+        ,#{locked,jdbcType=TINYINT},#{createTime,jdbcType=TIMESTAMP},#{updateTime,jdbcType=TIMESTAMP}
+        ,#{deleteTime,jdbcType=TIMESTAMP},#{deleted,jdbcType=TINYINT})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.silence.butterfly.web.module.sys.model.entity.UserInfo" useGeneratedKeys="true">
+        insert into user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="nickname != null">nickname,</if>
+                <if test="username != null">username,</if>
+                <if test="password != null">password,</if>
+                <if test="realName != null">real_name,</if>
+                <if test="certType != null">cert_type,</if>
+                <if test="certId != null">cert_id,</if>
+                <if test="gender != null">gender,</if>
+                <if test="inuse != null">inuse,</if>
+                <if test="locked != null">locked,</if>
+                <if test="createTime != null">create_time,</if>
+                <if test="updateTime != null">update_time,</if>
+                <if test="deleteTime != null">delete_time,</if>
+                <if test="deleted != null">deleted,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=VARCHAR},</if>
+                <if test="nickname != null">#{nickname,jdbcType=VARCHAR},</if>
+                <if test="username != null">#{username,jdbcType=VARCHAR},</if>
+                <if test="password != null">#{password,jdbcType=VARCHAR},</if>
+                <if test="realName != null">#{realName,jdbcType=VARCHAR},</if>
+                <if test="certType != null">#{certType,jdbcType=VARCHAR},</if>
+                <if test="certId != null">#{certId,jdbcType=VARCHAR},</if>
+                <if test="gender != null">#{gender,jdbcType=VARCHAR},</if>
+                <if test="inuse != null">#{inuse,jdbcType=TINYINT},</if>
+                <if test="locked != null">#{locked,jdbcType=TINYINT},</if>
+                <if test="createTime != null">#{createTime,jdbcType=TIMESTAMP},</if>
+                <if test="updateTime != null">#{updateTime,jdbcType=TIMESTAMP},</if>
+                <if test="deleteTime != null">#{deleteTime,jdbcType=TIMESTAMP},</if>
+                <if test="deleted != null">#{deleted,jdbcType=TINYINT},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.silence.butterfly.web.module.sys.model.entity.UserInfo">
+        update user_info
+        <set>
+                <if test="nickname != null">
+                    nickname = #{nickname,jdbcType=VARCHAR},
+                </if>
+                <if test="username != null">
+                    username = #{username,jdbcType=VARCHAR},
+                </if>
+                <if test="password != null">
+                    password = #{password,jdbcType=VARCHAR},
+                </if>
+                <if test="realName != null">
+                    real_name = #{realName,jdbcType=VARCHAR},
+                </if>
+                <if test="certType != null">
+                    cert_type = #{certType,jdbcType=VARCHAR},
+                </if>
+                <if test="certId != null">
+                    cert_id = #{certId,jdbcType=VARCHAR},
+                </if>
+                <if test="gender != null">
+                    gender = #{gender,jdbcType=VARCHAR},
+                </if>
+                <if test="inuse != null">
+                    inuse = #{inuse,jdbcType=TINYINT},
+                </if>
+                <if test="locked != null">
+                    locked = #{locked,jdbcType=TINYINT},
+                </if>
+                <if test="createTime != null">
+                    create_time = #{createTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="updateTime != null">
+                    update_time = #{updateTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="deleteTime != null">
+                    delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+                </if>
+                <if test="deleted != null">
+                    deleted = #{deleted,jdbcType=TINYINT},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=VARCHAR} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.silence.butterfly.web.module.sys.model.entity.UserInfo">
+        update user_info
+        set 
+            nickname =  #{nickname,jdbcType=VARCHAR},
+            username =  #{username,jdbcType=VARCHAR},
+            password =  #{password,jdbcType=VARCHAR},
+            real_name =  #{realName,jdbcType=VARCHAR},
+            cert_type =  #{certType,jdbcType=VARCHAR},
+            cert_id =  #{certId,jdbcType=VARCHAR},
+            gender =  #{gender,jdbcType=VARCHAR},
+            inuse =  #{inuse,jdbcType=TINYINT},
+            locked =  #{locked,jdbcType=TINYINT},
+            create_time =  #{createTime,jdbcType=TIMESTAMP},
+            update_time =  #{updateTime,jdbcType=TIMESTAMP},
+            delete_time =  #{deleteTime,jdbcType=TIMESTAMP},
+            deleted =  #{deleted,jdbcType=TINYINT}
+        where   id = #{id,jdbcType=VARCHAR} 
+    </update>
+    <select id="selectByUserDO" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        <where>
+            `deleted` = 0
+            <if test="nickname!=null and nickname!=''">
+                and `nickname` like concat(#{nickname},'%');
+            </if>
+        </where>
+        <if test="orderByClause!=null and orderByClause!=''">
+            order by #{orderByClause}
+        </if>
+    </select>
+    <select id="selectOneByUsername" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        where `username` = #{username} and `deleted` = 0
+        limit 1
+    </select>
+</mapper>

@@ -3,7 +3,7 @@ package cn.silence.butterfly.core.exception;
 import cn.silence.butterfly.core.util.ArrayUtils;
 import cn.silence.butterfly.core.util.CollectionUtils;
 import cn.silence.butterfly.core.util.MapUtils;
-import cn.silence.butterfly.core.util.StringUtils;
+import cn.silence.butterfly.core.util.StrUtils;
 import cn.silence.butterfly.core.util.result.ErrorCode;
 import cn.silence.butterfly.core.util.result.ErrorCodeMessage;
 
@@ -83,6 +83,18 @@ public final class BizAssert {
     }
 
     /**
+     * 断言字符串不能为空
+     *
+     * @param str     字符串
+     * @param message 错误信息
+     */
+    public static void notBlank(String str, String message) {
+        if (StrUtils.isBlank(str)) {
+            throw newException(message);
+        }
+    }
+
+    /**
      * 断言对象为空
      *
      * @param object  对象
@@ -120,7 +132,7 @@ public final class BizAssert {
      * @param message 不满足断言的异常信息
      */
     public static void notEmpty(String str, String message) {
-        isTrue(!StringUtils.isEmpty(str), message);
+        isTrue(!StrUtils.isEmpty(str), message);
     }
 
     /**
@@ -130,7 +142,7 @@ public final class BizAssert {
      * @param supplier 错误消息供应器
      */
     public static void notEmpty(String str, Supplier<String> supplier) {
-        isTrue(!StringUtils.isEmpty(str), supplier);
+        isTrue(!StrUtils.isEmpty(str), supplier);
     }
 
     /**
@@ -140,7 +152,7 @@ public final class BizAssert {
      * @param errorMessage 错误枚举
      */
     public static void notEmpty(String str, ErrorCodeMessage errorMessage, Object... params) {
-        isTrue(!StringUtils.isEmpty(str), errorMessage, params);
+        isTrue(!StrUtils.isEmpty(str), errorMessage, params);
     }
 
     /**

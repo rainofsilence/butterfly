@@ -3,6 +3,8 @@ package cn.silence.butterfly.core.exception;
 import cn.silence.butterfly.core.util.result.ErrorCodeMessage;
 
 /**
+ * 业务类异常
+ *
  * @author rainofsilence
  * @version 1.0.0
  * @since 2023/04/18 23:31:49

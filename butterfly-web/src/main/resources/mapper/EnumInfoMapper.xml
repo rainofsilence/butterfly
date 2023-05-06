@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.silence.butterfly.web.module.sys.mapper.EnumInfoMapper">
+    <resultMap id="BaseResultMap" type="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="parent_no" jdbcType="VARCHAR" property="parentNo"/>
+        <result column="parent_name" jdbcType="VARCHAR" property="parentName"/>
+        <result column="sub_no" jdbcType="VARCHAR" property="subNo"/>
+        <result column="sub_name" jdbcType="VARCHAR" property="subName"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="sort_no" jdbcType="VARCHAR" property="sortNo"/>
+        <result column="inuse" jdbcType="BIT" property="inuse"/>
+        <result column="create_username" jdbcType="VARCHAR" property="createUsername"/>
+        <result column="update_username" jdbcType="VARCHAR" property="updateUsername"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+    </resultMap>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
+        from enum_info
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo">
+        insert into enum_info (id, parent_no, parent_name,
+                               sub_no, sub_name, remark,
+                               sort_no, inuse, create_username,
+                               update_username, create_time, update_time)
+        values (#{id,jdbcType=VARCHAR}, #{parentNo,jdbcType=VARCHAR}, #{parentName,jdbcType=VARCHAR},
+                #{subNo,jdbcType=VARCHAR}, #{subName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},
+                #{sortNo,jdbcType=VARCHAR}, #{inuse,jdbcType=BIT}, #{createUsername,jdbcType=VARCHAR},
+                #{updateUsername,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+    </insert>
+    <update id="updateByPrimaryKey" parameterType="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo">
+        update enum_info
+        set parent_no       = #{parentNo,jdbcType=VARCHAR},
+            parent_name     = #{parentName,jdbcType=VARCHAR},
+            sub_no          = #{subNo,jdbcType=VARCHAR},
+            sub_name        = #{subName,jdbcType=VARCHAR},
+            remark          = #{remark,jdbcType=VARCHAR},
+            sort_no         = #{sortNo,jdbcType=VARCHAR},
+            inuse           = #{inuse,jdbcType=BIT},
+            create_username = #{createUsername,jdbcType=VARCHAR},
+            update_username = #{updateUsername,jdbcType=VARCHAR},
+            create_time     = #{createTime,jdbcType=TIMESTAMP},
+            update_time     = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select id,
+               parent_no,
+               parent_name,
+               sub_no,
+               sub_name,
+               remark,
+               sort_no,
+               inuse,
+               create_username,
+               update_username,
+               create_time,
+               update_time
+        from enum_info
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select id,
+               parent_no,
+               parent_name,
+               sub_no,
+               sub_name,
+               remark,
+               sort_no,
+               inuse,
+               create_username,
+               update_username,
+               create_time,
+               update_time
+        from enum_info
+    </select>
+</mapper>
