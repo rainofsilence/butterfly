@@ -1,82 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.silence.butterfly.web.module.sys.mapper.EnumInfoMapper">
-
     <resultMap id="BaseResultMap" type="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo">
-            <id property="id" column="id" jdbcType="VARCHAR"/>
-            <result property="enumNo" column="enum_no" jdbcType="VARCHAR"/>
-            <result property="enumName" column="enum_name" jdbcType="VARCHAR"/>
-            <result property="remark" column="remark" jdbcType="VARCHAR"/>
-            <result property="sortNo" column="sort_no" jdbcType="VARCHAR"/>
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="parent_no" jdbcType="VARCHAR" property="parentNo"/>
+        <result column="parent_name" jdbcType="VARCHAR" property="parentName"/>
+        <result column="sub_no" jdbcType="VARCHAR" property="subNo"/>
+        <result column="sub_name" jdbcType="VARCHAR" property="subName"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+        <result column="sort_no" jdbcType="VARCHAR" property="sortNo"/>
+        <result column="inuse" jdbcType="BIT" property="inuse"/>
+        <result column="create_username" jdbcType="VARCHAR" property="createUsername"/>
+        <result column="update_username" jdbcType="VARCHAR" property="updateUsername"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
     </resultMap>
-
-    <sql id="Base_Column_List">
-        id,enum_no,enum_name,
-        remark,sort_no
-    </sql>
-
-    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        delete
         from enum_info
-        where  id = #{id,jdbcType=VARCHAR} 
-    </select>
-
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-        delete from enum_info
-        where  id = #{id,jdbcType=VARCHAR} 
+        where id = #{id,jdbcType=VARCHAR}
     </delete>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo" useGeneratedKeys="true">
-        insert into enum_info
-        ( id,enum_no,enum_name
-        ,remark,sort_no)
-        values (#{id,jdbcType=VARCHAR},#{enumNo,jdbcType=VARCHAR},#{enumName,jdbcType=VARCHAR}
-        ,#{remark,jdbcType=VARCHAR},#{sortNo,jdbcType=VARCHAR})
+    <insert id="insert" parameterType="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo">
+        insert into enum_info (id, parent_no, parent_name,
+                               sub_no, sub_name, remark,
+                               sort_no, inuse, create_username,
+                               update_username, create_time, update_time)
+        values (#{id,jdbcType=VARCHAR}, #{parentNo,jdbcType=VARCHAR}, #{parentName,jdbcType=VARCHAR},
+                #{subNo,jdbcType=VARCHAR}, #{subName,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR},
+                #{sortNo,jdbcType=VARCHAR}, #{inuse,jdbcType=BIT}, #{createUsername,jdbcType=VARCHAR},
+                #{updateUsername,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
     </insert>
-    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo" useGeneratedKeys="true">
-        insert into enum_info
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-                <if test="id != null">id,</if>
-                <if test="enumNo != null">enum_no,</if>
-                <if test="enumName != null">enum_name,</if>
-                <if test="remark != null">remark,</if>
-                <if test="sortNo != null">sort_no,</if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-                <if test="id != null">#{id,jdbcType=VARCHAR},</if>
-                <if test="enumNo != null">#{enumNo,jdbcType=VARCHAR},</if>
-                <if test="enumName != null">#{enumName,jdbcType=VARCHAR},</if>
-                <if test="remark != null">#{remark,jdbcType=VARCHAR},</if>
-                <if test="sortNo != null">#{sortNo,jdbcType=VARCHAR},</if>
-        </trim>
-    </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo">
-        update enum_info
-        <set>
-                <if test="enumNo != null">
-                    enum_no = #{enumNo,jdbcType=VARCHAR},
-                </if>
-                <if test="enumName != null">
-                    enum_name = #{enumName,jdbcType=VARCHAR},
-                </if>
-                <if test="remark != null">
-                    remark = #{remark,jdbcType=VARCHAR},
-                </if>
-                <if test="sortNo != null">
-                    sort_no = #{sortNo,jdbcType=VARCHAR},
-                </if>
-        </set>
-        where   id = #{id,jdbcType=VARCHAR} 
-    </update>
     <update id="updateByPrimaryKey" parameterType="cn.silence.butterfly.web.module.sys.model.entity.EnumInfo">
         update enum_info
-        set 
-            enum_no =  #{enumNo,jdbcType=VARCHAR},
-            enum_name =  #{enumName,jdbcType=VARCHAR},
-            remark =  #{remark,jdbcType=VARCHAR},
-            sort_no =  #{sortNo,jdbcType=VARCHAR}
-        where   id = #{id,jdbcType=VARCHAR} 
+        set parent_no       = #{parentNo,jdbcType=VARCHAR},
+            parent_name     = #{parentName,jdbcType=VARCHAR},
+            sub_no          = #{subNo,jdbcType=VARCHAR},
+            sub_name        = #{subName,jdbcType=VARCHAR},
+            remark          = #{remark,jdbcType=VARCHAR},
+            sort_no         = #{sortNo,jdbcType=VARCHAR},
+            inuse           = #{inuse,jdbcType=BIT},
+            create_username = #{createUsername,jdbcType=VARCHAR},
+            update_username = #{updateUsername,jdbcType=VARCHAR},
+            create_time     = #{createTime,jdbcType=TIMESTAMP},
+            update_time     = #{updateTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=VARCHAR}
     </update>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select id,
+               parent_no,
+               parent_name,
+               sub_no,
+               sub_name,
+               remark,
+               sort_no,
+               inuse,
+               create_username,
+               update_username,
+               create_time,
+               update_time
+        from enum_info
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select id,
+               parent_no,
+               parent_name,
+               sub_no,
+               sub_name,
+               remark,
+               sort_no,
+               inuse,
+               create_username,
+               update_username,
+               create_time,
+               update_time
+        from enum_info
+    </select>
 </mapper>

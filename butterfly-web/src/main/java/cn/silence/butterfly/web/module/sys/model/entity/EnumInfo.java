@@ -1,153 +1,127 @@
 package cn.silence.butterfly.web.module.sys.model.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
-/**
- * 枚举信息表
- * @TableName enum_info
- */
 public class EnumInfo implements Serializable {
-    /**
-     * 
-     */
+    private static final long serialVersionUID = 8376708570315296573L;
     private String id;
 
-    /**
-     * 枚举编号
-     */
-    private String enumNo;
+    private String parentNo;
 
-    /**
-     * 枚举名称
-     */
-    private String enumName;
+    private String parentName;
 
-    /**
-     * 说明
-     */
+    private String subNo;
+
+    private String subName;
+
     private String remark;
 
-    /**
-     * 排序
-     */
     private String sortNo;
 
-    private static final long serialVersionUID = 1L;
+    private Boolean inuse;
 
-    /**
-     * 
-     */
+    private String createUsername;
+
+    private String updateUsername;
+
+    private Date createTime;
+
+    private Date updateTime;
+
     public String getId() {
         return id;
     }
 
-    /**
-     * 
-     */
     public void setId(String id) {
-        this.id = id;
+        this.id = id == null ? null : id.trim();
     }
 
-    /**
-     * 枚举编号
-     */
-    public String getEnumNo() {
-        return enumNo;
+    public String getParentNo() {
+        return parentNo;
     }
 
-    /**
-     * 枚举编号
-     */
-    public void setEnumNo(String enumNo) {
-        this.enumNo = enumNo;
+    public void setParentNo(String parentNo) {
+        this.parentNo = parentNo == null ? null : parentNo.trim();
     }
 
-    /**
-     * 枚举名称
-     */
-    public String getEnumName() {
-        return enumName;
+    public String getParentName() {
+        return parentName;
     }
 
-    /**
-     * 枚举名称
-     */
-    public void setEnumName(String enumName) {
-        this.enumName = enumName;
+    public void setParentName(String parentName) {
+        this.parentName = parentName == null ? null : parentName.trim();
     }
 
-    /**
-     * 说明
-     */
+    public String getSubNo() {
+        return subNo;
+    }
+
+    public void setSubNo(String subNo) {
+        this.subNo = subNo == null ? null : subNo.trim();
+    }
+
+    public String getSubName() {
+        return subName;
+    }
+
+    public void setSubName(String subName) {
+        this.subName = subName == null ? null : subName.trim();
+    }
+
     public String getRemark() {
         return remark;
     }
 
-    /**
-     * 说明
-     */
     public void setRemark(String remark) {
-        this.remark = remark;
+        this.remark = remark == null ? null : remark.trim();
     }
 
-    /**
-     * 排序
-     */
     public String getSortNo() {
         return sortNo;
     }
 
-    /**
-     * 排序
-     */
     public void setSortNo(String sortNo) {
-        this.sortNo = sortNo;
+        this.sortNo = sortNo == null ? null : sortNo.trim();
     }
 
-    @Override
-    public boolean equals(Object that) {
-        if (this == that) {
-            return true;
-        }
-        if (that == null) {
-            return false;
-        }
-        if (getClass() != that.getClass()) {
-            return false;
-        }
-        EnumInfo other = (EnumInfo) that;
-        return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getEnumNo() == null ? other.getEnumNo() == null : this.getEnumNo().equals(other.getEnumNo()))
-            && (this.getEnumName() == null ? other.getEnumName() == null : this.getEnumName().equals(other.getEnumName()))
-            && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
-            && (this.getSortNo() == null ? other.getSortNo() == null : this.getSortNo().equals(other.getSortNo()));
+    public Boolean getInuse() {
+        return inuse;
     }
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getEnumNo() == null) ? 0 : getEnumNo().hashCode());
-        result = prime * result + ((getEnumName() == null) ? 0 : getEnumName().hashCode());
-        result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());
-        result = prime * result + ((getSortNo() == null) ? 0 : getSortNo().hashCode());
-        return result;
+    public void setInuse(Boolean inuse) {
+        this.inuse = inuse;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", enumNo=").append(enumNo);
-        sb.append(", enumName=").append(enumName);
-        sb.append(", remark=").append(remark);
-        sb.append(", sortNo=").append(sortNo);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+    public String getCreateUsername() {
+        return createUsername;
+    }
+
+    public void setCreateUsername(String createUsername) {
+        this.createUsername = createUsername == null ? null : createUsername.trim();
+    }
+
+    public String getUpdateUsername() {
+        return updateUsername;
+    }
+
+    public void setUpdateUsername(String updateUsername) {
+        this.updateUsername = updateUsername == null ? null : updateUsername.trim();
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }
