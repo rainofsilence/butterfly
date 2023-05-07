@@ -35,6 +35,10 @@ public enum ErrorCode implements ErrorCodeMessage {
      * 工具类错误
      */
     UTIL_ERROR("577", "util error"),
+    /**
+     * 工具类错误
+     */
+    SERVICE_STILL_DEV("578", "service still dev"),
     ;
 
     /**
