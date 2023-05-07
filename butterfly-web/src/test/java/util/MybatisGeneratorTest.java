@@ -22,8 +22,8 @@ class MybatisGeneratorTest {
         // MBG执行过程中的警告信息
         List<String> warnings = new ArrayList<String>();
         // 生成代码重复时，是否覆盖源代码
-        boolean override = false;
-        InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("generatorConfig.xml");
+        boolean override = true;
+        InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("mybatisGeneratorConfig.xml");
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(in);
 
