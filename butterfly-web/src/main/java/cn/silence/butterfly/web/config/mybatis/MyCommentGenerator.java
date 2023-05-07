@@ -136,7 +136,7 @@ public class MyCommentGenerator implements CommentGenerator {
         }
         field.addJavaDocLine("/**");
         FullyQualifiedTable fullyQualifiedTable = introspectedTable.getFullyQualifiedTable();
-        field.addJavaDocLine(fullyQualifiedTable == null ? "*" : String.valueOf(fullyQualifiedTable));
+        field.addJavaDocLine(fullyQualifiedTable == null ? " *" : " * " + fullyQualifiedTable);
         field.addJavaDocLine(" */");
     }
 

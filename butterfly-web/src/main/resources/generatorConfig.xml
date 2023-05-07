@@ -10,7 +10,7 @@
     <!-- 指定特定数据库的jdbc驱动jar包的位置(绝对路径) -->
     <!-- <classPathEntry location="${jdbc.driverLocation}"/> -->
 
-    <context id="mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3Simple">
+    <context id="mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3">
 
         <!-- 自定义插件 -->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
@@ -62,8 +62,12 @@
         </javaClientGenerator>
 
         <!-- tableName -->
-        <table tableName="user_info" domainObjectName="UserInfo">
-
+        <table tableName="user_info" domainObjectName="UserInfo"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false"
+        >
         </table>
 
         <!--
