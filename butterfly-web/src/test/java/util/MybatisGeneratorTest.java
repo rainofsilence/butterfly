@@ -23,7 +23,7 @@ class MybatisGeneratorTest {
         List<String> warnings = new ArrayList<String>();
         // 生成代码重复时，是否覆盖源代码
         boolean override = true;
-        InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("mybatisGeneratorConfig.xml");
+        InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream("generatorConfig.xml");
         ConfigurationParser cp = new ConfigurationParser(warnings);
         Configuration config = cp.parseConfiguration(in);
 
