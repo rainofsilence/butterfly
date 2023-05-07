@@ -83,23 +83,35 @@ public class MyCommentGenerator implements CommentGenerator {
             return;
         }
 
-        StringBuilder sbHeader = new StringBuilder();
-        sbHeader.append("/**\n *");
+        // UserInfoKey topComment 特殊处理
+        String shortName = topLevelClass.getType().getShortName();
+        if (shortName.endsWith("Key")) {
+            topLevelClass.addJavaDocLine("/**");
+            topLevelClass.addJavaDocLine(" * " + shortName.replace("Key", ".PrimaryKey"));
+            topLevelClass.addJavaDocLine(" * ");
+            topLevelClass.addJavaDocLine(" * @author " + System.getProperty("user.name"));
+            topLevelClass.addJavaDocLine(" * @version v1.0.0 ");
+            topLevelClass.addJavaDocLine(" * @since " + defaultDateFormat.format(new Date()));
+            topLevelClass.addJavaDocLine(" */");
+            return;
+        }
+
+        topLevelClass.addJavaDocLine("/**");
 
         String remarks = introspectedTable.getRemarks();
         if (addRemarkComments && StringUtility.stringHasValue(remarks)) {
             String[] remarkLines = remarks.split(System.getProperty("line.separator"));
             for (String remarkLine : remarkLines) {
-                sbHeader.append(" ").append(remarkLine);
+                topLevelClass.addJavaDocLine(" * " + remarkLine + " " + introspectedTable.getFullyQualifiedTable().toString());
             }
+        } else {
+            topLevelClass.addJavaDocLine(" * " + introspectedTable.getFullyQualifiedTable().toString());
         }
-        sbHeader.append(" ").append(introspectedTable.getFullyQualifiedTable().toString()).append("\n");
-        sbHeader.append(" *\n");
-        sbHeader.append(String.format(" * @author %s\n", System.getProperty("user.name")));
-        sbHeader.append(" * @version 1.0.0\n");
-        sbHeader.append(String.format(" * @since %s\n", defaultDateFormat.format(new Date())));
-        sbHeader.append(" */");
-        topLevelClass.addJavaDocLine(sbHeader.toString());
+        topLevelClass.addJavaDocLine(" * ");
+        topLevelClass.addJavaDocLine(" * @author " + System.getProperty("user.name"));
+        topLevelClass.addJavaDocLine(" * @version v1.0.0 ");
+        topLevelClass.addJavaDocLine(" * @since " + defaultDateFormat.format(new Date()));
+        topLevelClass.addJavaDocLine(" */");
     }
 
     /**
@@ -135,8 +147,12 @@ public class MyCommentGenerator implements CommentGenerator {
             return;
         }
         field.addJavaDocLine("/**");
-        FullyQualifiedTable fullyQualifiedTable = introspectedTable.getFullyQualifiedTable();
-        field.addJavaDocLine(fullyQualifiedTable == null ? " *" : " * " + fullyQualifiedTable);
+        if ("serialVersionUID".equals(field.getName())) {
+            field.addJavaDocLine(" * serialVersionUID");
+        } else {
+            FullyQualifiedTable fullyQualifiedTable = introspectedTable.getFullyQualifiedTable();
+            field.addJavaDocLine(fullyQualifiedTable == null ? " *" : " * " + fullyQualifiedTable);
+        }
         field.addJavaDocLine(" */");
     }
 

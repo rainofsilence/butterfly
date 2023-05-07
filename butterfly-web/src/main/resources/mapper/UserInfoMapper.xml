@@ -1,101 +1,300 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.silence.butterfly.web.module.sys.mapper.UserInfoMapper">
-  <resultMap id="BaseResultMap" type="cn.silence.butterfly.web.module.sys.model.entity.UserInfo">
-    <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
-    <result column="username" jdbcType="VARCHAR" property="username" />
-    <result column="password" jdbcType="VARCHAR" property="password" />
-    <result column="real_name" jdbcType="VARCHAR" property="realName" />
-    <result column="cert_type" jdbcType="VARCHAR" property="certType" />
-    <result column="cert_id" jdbcType="VARCHAR" property="certId" />
-    <result column="gender" jdbcType="VARCHAR" property="gender" />
-    <result column="email" jdbcType="VARCHAR" property="email" />
-    <result column="phone" jdbcType="VARCHAR" property="phone" />
-    <result column="landline" jdbcType="VARCHAR" property="landline" />
-    <result column="signature" jdbcType="VARCHAR" property="signature" />
-    <result column="latest_login_time" jdbcType="TIMESTAMP" property="latestLoginTime" />
-    <result column="latest_login_ip" jdbcType="VARCHAR" property="latestLoginIp" />
-    <result column="inuse" jdbcType="BIT" property="inuse" />
-    <result column="locked" jdbcType="BIT" property="locked" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime" />
-    <result column="deleted" jdbcType="BIT" property="deleted" />
-  </resultMap>
-  <sql id="Base_Column_List">
-      id, nickname, username, password, real_name, cert_type, cert_id, gender, email, phone, landline, signature,
-          latest_login_time, latest_login_ip, inuse, locked, create_time, update_time, delete_time, deleted
-  </sql>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from user_info
-    where id = #{id,jdbcType=VARCHAR}
-  </delete>
-  <insert id="insert" parameterType="cn.silence.butterfly.web.module.sys.model.entity.UserInfo">
-    insert into user_info (<include refid="Base_Column_List"/>)
-    values (#{id,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
-      #{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{certType,jdbcType=VARCHAR}, 
-      #{certId,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{landline,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, 
-      #{latestLoginTime,jdbcType=TIMESTAMP}, #{latestLoginIp,jdbcType=VARCHAR}, #{inuse,jdbcType=BIT}, 
-      #{locked,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{deleteTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT})
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="cn.silence.butterfly.web.module.sys.model.entity.UserInfo">
-    update user_info
-    set nickname = #{nickname,jdbcType=VARCHAR},
-      username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      real_name = #{realName,jdbcType=VARCHAR},
-      cert_type = #{certType,jdbcType=VARCHAR},
-      cert_id = #{certId,jdbcType=VARCHAR},
-      gender = #{gender,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      phone = #{phone,jdbcType=VARCHAR},
-      landline = #{landline,jdbcType=VARCHAR},
-      signature = #{signature,jdbcType=VARCHAR},
-      latest_login_time = #{latestLoginTime,jdbcType=TIMESTAMP},
-      latest_login_ip = #{latestLoginIp,jdbcType=VARCHAR},
-      inuse = #{inuse,jdbcType=BIT},
-      locked = #{locked,jdbcType=BIT},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      delete_time = #{deleteTime,jdbcType=TIMESTAMP},
-      deleted = #{deleted,jdbcType=BIT}
-    where id = #{id,jdbcType=VARCHAR}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-      select
-      <include refid="Base_Column_List"/>
-      from user_info
-      where id = #{id,jdbcType=VARCHAR}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, nickname, username, password, real_name, cert_type, cert_id, gender, email, 
-    phone, landline, signature, latest_login_time, latest_login_ip, inuse, locked, create_time, 
-    update_time, delete_time, deleted
-    from user_info
-  </select>
+    <resultMap id="BaseResultMap" type="cn.silence.butterfly.web.module.sys.model.entity.UserInfo">
+        <id column="id" jdbcType="VARCHAR" property="id"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="real_name" jdbcType="VARCHAR" property="realName"/>
+        <result column="cert_type" jdbcType="VARCHAR" property="certType"/>
+        <result column="cert_id" jdbcType="VARCHAR" property="certId"/>
+        <result column="gender" jdbcType="VARCHAR" property="gender"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="landline" jdbcType="VARCHAR" property="landline"/>
+        <result column="signature" jdbcType="VARCHAR" property="signature"/>
+        <result column="latest_login_time" jdbcType="TIMESTAMP" property="latestLoginTime"/>
+        <result column="latest_login_ip" jdbcType="VARCHAR" property="latestLoginIp"/>
+        <result column="inuse" jdbcType="BIT" property="inuse"/>
+        <result column="locked" jdbcType="BIT" property="locked"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime"/>
+        <result column="delete_time" jdbcType="TIMESTAMP" property="deleteTime"/>
+        <result column="deleted" jdbcType="BIT" property="deleted"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        , nickname, username, password, real_name, cert_type, cert_id, gender, email, phone, landline, signature,
+            latest_login_time, latest_login_ip, inuse, locked, create_time, update_time, delete_time, deleted
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="cn.silence.butterfly.web.module.sys.model.entity.UserInfoKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        where id = #{id,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="cn.silence.butterfly.web.module.sys.model.entity.UserInfoKey">
+        delete
+        from user_info
+        where id = #{id,jdbcType=VARCHAR}
+    </delete>
+    <insert id="insert" parameterType="cn.silence.butterfly.web.module.sys.model.entity.UserInfo">
+        insert into user_info (id, nickname, username,
+                               password, real_name, cert_type,
+                               cert_id, gender, email,
+                               phone, landline, signature,
+                               latest_login_time, latest_login_ip, inuse,
+                               locked, create_time, update_time,
+                               delete_time, deleted)
+        values (#{id,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR},
+                #{password,jdbcType=VARCHAR}, #{realName,jdbcType=VARCHAR}, #{certType,jdbcType=VARCHAR},
+                #{certId,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+                #{phone,jdbcType=VARCHAR}, #{landline,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR},
+                #{latestLoginTime,jdbcType=TIMESTAMP}, #{latestLoginIp,jdbcType=VARCHAR}, #{inuse,jdbcType=BIT},
+                #{locked,jdbcType=BIT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP},
+                #{deleteTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=BIT})
+    </insert>
+    <insert id="insertSelective" parameterType="cn.silence.butterfly.web.module.sys.model.entity.UserInfo">
+        insert into user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="nickname != null">
+                nickname,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="realName != null">
+                real_name,
+            </if>
+            <if test="certType != null">
+                cert_type,
+            </if>
+            <if test="certId != null">
+                cert_id,
+            </if>
+            <if test="gender != null">
+                gender,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="landline != null">
+                landline,
+            </if>
+            <if test="signature != null">
+                signature,
+            </if>
+            <if test="latestLoginTime != null">
+                latest_login_time,
+            </if>
+            <if test="latestLoginIp != null">
+                latest_login_ip,
+            </if>
+            <if test="inuse != null">
+                inuse,
+            </if>
+            <if test="locked != null">
+                locked,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="deleteTime != null">
+                delete_time,
+            </if>
+            <if test="deleted != null">
+                deleted,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="nickname != null">
+                #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="certType != null">
+                #{certType,jdbcType=VARCHAR},
+            </if>
+            <if test="certId != null">
+                #{certId,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="landline != null">
+                #{landline,jdbcType=VARCHAR},
+            </if>
+            <if test="signature != null">
+                #{signature,jdbcType=VARCHAR},
+            </if>
+            <if test="latestLoginTime != null">
+                #{latestLoginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="latestLoginIp != null">
+                #{latestLoginIp,jdbcType=VARCHAR},
+            </if>
+            <if test="inuse != null">
+                #{inuse,jdbcType=BIT},
+            </if>
+            <if test="locked != null">
+                #{locked,jdbcType=BIT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteTime != null">
+                #{deleteTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleted != null">
+                #{deleted,jdbcType=BIT},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.silence.butterfly.web.module.sys.model.entity.UserInfo">
+        update user_info
+        <set>
+            <if test="nickname != null">
+                nickname = #{nickname,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="realName != null">
+                real_name = #{realName,jdbcType=VARCHAR},
+            </if>
+            <if test="certType != null">
+                cert_type = #{certType,jdbcType=VARCHAR},
+            </if>
+            <if test="certId != null">
+                cert_id = #{certId,jdbcType=VARCHAR},
+            </if>
+            <if test="gender != null">
+                gender = #{gender,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="landline != null">
+                landline = #{landline,jdbcType=VARCHAR},
+            </if>
+            <if test="signature != null">
+                signature = #{signature,jdbcType=VARCHAR},
+            </if>
+            <if test="latestLoginTime != null">
+                latest_login_time = #{latestLoginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="latestLoginIp != null">
+                latest_login_ip = #{latestLoginIp,jdbcType=VARCHAR},
+            </if>
+            <if test="inuse != null">
+                inuse = #{inuse,jdbcType=BIT},
+            </if>
+            <if test="locked != null">
+                locked = #{locked,jdbcType=BIT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleteTime != null">
+                delete_time = #{deleteTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="deleted != null">
+                deleted = #{deleted,jdbcType=BIT},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.silence.butterfly.web.module.sys.model.entity.UserInfo">
+        update user_info
+        set nickname          = #{nickname,jdbcType=VARCHAR},
+            username          = #{username,jdbcType=VARCHAR},
+            password          = #{password,jdbcType=VARCHAR},
+            real_name         = #{realName,jdbcType=VARCHAR},
+            cert_type         = #{certType,jdbcType=VARCHAR},
+            cert_id           = #{certId,jdbcType=VARCHAR},
+            gender            = #{gender,jdbcType=VARCHAR},
+            email             = #{email,jdbcType=VARCHAR},
+            phone             = #{phone,jdbcType=VARCHAR},
+            landline          = #{landline,jdbcType=VARCHAR},
+            signature         = #{signature,jdbcType=VARCHAR},
+            latest_login_time = #{latestLoginTime,jdbcType=TIMESTAMP},
+            latest_login_ip   = #{latestLoginIp,jdbcType=VARCHAR},
+            inuse             = #{inuse,jdbcType=BIT},
+            locked            = #{locked,jdbcType=BIT},
+            create_time       = #{createTime,jdbcType=TIMESTAMP},
+            update_time       = #{updateTime,jdbcType=TIMESTAMP},
+            delete_time       = #{deleteTime,jdbcType=TIMESTAMP},
+            deleted           = #{deleted,jdbcType=BIT}
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
 
-  <select id="selectByUserDO" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List"/>
-    from user_info
-    <where>
-      `deleted` = 0
-      <if test="nickname!=null and nickname!=''">
-        and `nickname` like concat(#{nickname},'%');
-      </if>
-    </where>
-    <if test="orderByClause!=null and orderByClause!=''">
-      order by #{orderByClause}
-    </if>
-  </select>
-  <select id="selectOneByUsername" resultMap="BaseResultMap">
-    select
-    <include refid="Base_Column_List"/>
-    from user_info
-    where `username` = #{username} and `deleted` = 0
-    limit 1
-  </select>
+    <select id="selectByUserDO" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        <where>
+            `deleted` = 0
+            <if test="nickname!=null and nickname!=''">
+                and `nickname` like concat(#{nickname},'%');
+            </if>
+        </where>
+        <if test="orderByClause!=null and orderByClause!=''">
+            order by #{orderByClause}
+        </if>
+    </select>
+    <select id="selectIdByUsername" resultType="java.lang.String">
+        select id
+        from user_info
+        where `username` = #{username}
+          and `deleted` = 0 limit 1
+    </select>
+    <select id="selectOneByUsername" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        where `username` = #{username} and `deleted` = 0
+        limit 1
+    </select>
+
 </mapper>

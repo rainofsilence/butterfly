@@ -1,8 +1,11 @@
 package cn.silence.butterfly.web.module.sys.service.impl;
 
+import cn.silence.butterfly.core.exception.BizException;
 import cn.silence.butterfly.core.util.BeanPlusUtils;
 import cn.silence.butterfly.core.util.StrUtils;
+import cn.silence.butterfly.core.util.UUIDUtils;
 import cn.silence.butterfly.core.util.result.BaseResponse;
+import cn.silence.butterfly.core.util.result.ErrorCode;
 import cn.silence.butterfly.core.util.result.PageResult;
 import cn.silence.butterfly.web.module.sys.mapper.UserInfoMapper;
 import cn.silence.butterfly.web.module.sys.model.entity.UserInfo;
@@ -50,19 +53,29 @@ public class UserInfoService implements IUserInfoService {
 
     @Override
     public BaseResponse<String> insert(UserVO userVO) {
-        // TODO
-        return null;
+        String username = userVO.getUsername();
+        // username不能重复
+        synchronized (username.intern()) {
+            String id = userInfoMapper.selectIdByUsername(username);
+            if (StrUtils.isNotBlank(id)) {
+                throw new BizException(ErrorCode.PARAM_ERROR, "username is already exists!");
+            }
+            UserInfo userInfo = BeanPlusUtils.copyProperties(userVO, UserInfo.class);
+            userInfo.setId("ui" + UUIDUtils.generate32UUID());
+            userInfoMapper.insertSelective(userInfo);
+        }
+        return BaseResponse.success("Insert success");
     }
 
     @Override
     public BaseResponse<String> update(UserVO userVO) {
         // TODO
-        return null;
+        return BaseResponse.stillDev();
     }
 
     @Override
     public BaseResponse<String> delete(String username) {
         // TODO
-        return null;
+        return BaseResponse.stillDev();
     }
 }

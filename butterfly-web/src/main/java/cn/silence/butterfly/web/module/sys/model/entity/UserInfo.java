@@ -8,14 +8,9 @@ import java.util.Date;
  *
  * @author rainofsilence
  * @version 1.0.0
- * @since 2023/05/07 18:24:41
+ * @since 2023/05/08 00:15:37
  */
-public class UserInfo implements Serializable {
-    /**
-     *
-     */
-    private String id;
-
+public class UserInfo extends UserInfoKey implements Serializable {
     /**
      * 昵称
      */
@@ -112,17 +107,9 @@ public class UserInfo implements Serializable {
     private Boolean deleted;
 
     /**
-     * user_info
+     * serialVersionUID
      */
     private static final long serialVersionUID = 1L;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
 
     public String getNickname() {
         return nickname;
@@ -289,25 +276,25 @@ public class UserInfo implements Serializable {
         }
         UserInfo other = (UserInfo) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-                && (this.getNickname() == null ? other.getNickname() == null : this.getNickname().equals(other.getNickname()))
-                && (this.getUsername() == null ? other.getUsername() == null : this.getUsername().equals(other.getUsername()))
-                && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
-                && (this.getRealName() == null ? other.getRealName() == null : this.getRealName().equals(other.getRealName()))
-                && (this.getCertType() == null ? other.getCertType() == null : this.getCertType().equals(other.getCertType()))
-                && (this.getCertId() == null ? other.getCertId() == null : this.getCertId().equals(other.getCertId()))
-                && (this.getGender() == null ? other.getGender() == null : this.getGender().equals(other.getGender()))
-                && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
-                && (this.getPhone() == null ? other.getPhone() == null : this.getPhone().equals(other.getPhone()))
-                && (this.getLandline() == null ? other.getLandline() == null : this.getLandline().equals(other.getLandline()))
-                && (this.getSignature() == null ? other.getSignature() == null : this.getSignature().equals(other.getSignature()))
-                && (this.getLatestLoginTime() == null ? other.getLatestLoginTime() == null : this.getLatestLoginTime().equals(other.getLatestLoginTime()))
-                && (this.getLatestLoginIp() == null ? other.getLatestLoginIp() == null : this.getLatestLoginIp().equals(other.getLatestLoginIp()))
-                && (this.getInuse() == null ? other.getInuse() == null : this.getInuse().equals(other.getInuse()))
-                && (this.getLocked() == null ? other.getLocked() == null : this.getLocked().equals(other.getLocked()))
-                && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-                && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-                && (this.getDeleteTime() == null ? other.getDeleteTime() == null : this.getDeleteTime().equals(other.getDeleteTime()))
-                && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
+            && (this.getNickname() == null ? other.getNickname() == null : this.getNickname().equals(other.getNickname()))
+            && (this.getUsername() == null ? other.getUsername() == null : this.getUsername().equals(other.getUsername()))
+            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
+            && (this.getRealName() == null ? other.getRealName() == null : this.getRealName().equals(other.getRealName()))
+            && (this.getCertType() == null ? other.getCertType() == null : this.getCertType().equals(other.getCertType()))
+            && (this.getCertId() == null ? other.getCertId() == null : this.getCertId().equals(other.getCertId()))
+            && (this.getGender() == null ? other.getGender() == null : this.getGender().equals(other.getGender()))
+            && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
+            && (this.getPhone() == null ? other.getPhone() == null : this.getPhone().equals(other.getPhone()))
+            && (this.getLandline() == null ? other.getLandline() == null : this.getLandline().equals(other.getLandline()))
+            && (this.getSignature() == null ? other.getSignature() == null : this.getSignature().equals(other.getSignature()))
+            && (this.getLatestLoginTime() == null ? other.getLatestLoginTime() == null : this.getLatestLoginTime().equals(other.getLatestLoginTime()))
+            && (this.getLatestLoginIp() == null ? other.getLatestLoginIp() == null : this.getLatestLoginIp().equals(other.getLatestLoginIp()))
+            && (this.getInuse() == null ? other.getInuse() == null : this.getInuse().equals(other.getInuse()))
+            && (this.getLocked() == null ? other.getLocked() == null : this.getLocked().equals(other.getLocked()))
+            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
+            && (this.getDeleteTime() == null ? other.getDeleteTime() == null : this.getDeleteTime().equals(other.getDeleteTime()))
+            && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
     }
 
     @Override
@@ -343,7 +330,6 @@ public class UserInfo implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
         sb.append(", nickname=").append(nickname);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);

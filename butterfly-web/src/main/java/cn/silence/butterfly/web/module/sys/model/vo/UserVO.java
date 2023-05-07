@@ -26,6 +26,18 @@ public class UserVO implements Serializable {
     @ApiModelProperty("性别")
     private String genderName;
 
+    @ApiModelProperty("邮箱")
+    private String email;
+
+    @ApiModelProperty("手机")
+    private String phone;
+
+    @ApiModelProperty("座机")
+    private String landline;
+
+    @ApiModelProperty("个性签名")
+    private String signature;
+
     public String getNickname() {
         return nickname;
     }
@@ -58,6 +70,38 @@ public class UserVO implements Serializable {
         this.genderName = genderName;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getLandline() {
+        return landline;
+    }
+
+    public void setLandline(String landline) {
+        this.landline = landline;
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature;
+    }
+
     @Override
     public String toString() {
         return "UserVO{" +
@@ -65,6 +109,10 @@ public class UserVO implements Serializable {
                 ", username='" + username + '\'' +
                 ", gender='" + gender + '\'' +
                 ", genderName='" + genderName + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", landline='" + landline + '\'' +
+                ", signature='" + signature + '\'' +
                 '}';
     }
 }
