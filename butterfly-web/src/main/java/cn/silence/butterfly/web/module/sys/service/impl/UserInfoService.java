@@ -7,6 +7,7 @@ import cn.silence.butterfly.core.util.UUIDUtils;
 import cn.silence.butterfly.core.util.result.BaseResponse;
 import cn.silence.butterfly.core.util.result.ErrorCode;
 import cn.silence.butterfly.core.util.result.PageResult;
+import cn.silence.butterfly.web.module.sys.common.service.IUserCheck;
 import cn.silence.butterfly.web.module.sys.mapper.UserInfoMapper;
 import cn.silence.butterfly.web.module.sys.model.entity.UserInfo;
 import cn.silence.butterfly.web.module.sys.model.po.UserDO;
@@ -31,6 +32,8 @@ public class UserInfoService implements IUserInfoService {
 
     @Resource
     private UserInfoMapper userInfoMapper;
+    @Resource
+    private IUserCheck iUserCheck;
 
     @Override
     public BaseResponse<PageResult<UserVO>> pageList(UserPageRequest pageRequest) {
@@ -56,9 +59,8 @@ public class UserInfoService implements IUserInfoService {
         String username = userVO.getUsername();
         // username不能重复
         synchronized (username.intern()) {
-            String id = userInfoMapper.selectIdByUsername(username);
-            if (StrUtils.isNotBlank(id)) {
-                throw new BizException(ErrorCode.PARAM_ERROR, "username is already exists!");
+            if (iUserCheck.isExists(username)) {
+                throw new BizException(ErrorCode.PARAM_ERROR.getCode(), "The current username already exists!");
             }
             UserInfo userInfo = BeanPlusUtils.copyProperties(userVO, UserInfo.class);
             userInfo.setId("ui" + UUIDUtils.generate32UUID());
@@ -75,7 +77,10 @@ public class UserInfoService implements IUserInfoService {
 
     @Override
     public BaseResponse<String> delete(String username) {
-        // TODO
-        return BaseResponse.stillDev();
+        if (!iUserCheck.isExists(username)) {
+            throw new BizException(ErrorCode.PARAM_ERROR, "The current user does not exist or has been deleted!");
+        }
+        userInfoMapper.deleteByUsernameLogic(username);
+        return BaseResponse.success("Delete success");
     }
 }

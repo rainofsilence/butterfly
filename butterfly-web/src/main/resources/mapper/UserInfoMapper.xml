@@ -39,6 +39,16 @@
         from user_info
         where id = #{id,jdbcType=VARCHAR}
     </delete>
+    <update id="deleteByPrimaryKeyLogic">
+        update user_info
+        set deleted = '1'
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+    <update id="deleteByUsernameLogic">
+        update user_info
+        set deleted = '1'
+        where (deleted is null or deleted = '0') and username = #{username,jdbcType=VARCHAR}
+    </update>
     <insert id="insert" parameterType="cn.silence.butterfly.web.module.sys.model.entity.UserInfo">
         insert into user_info (id, nickname, username,
                                password, real_name, cert_type,

@@ -10,6 +10,10 @@ import java.util.List;
 public interface UserInfoMapper {
     int deleteByPrimaryKey(UserInfoKey key);
 
+    int deleteByPrimaryKeyLogic(UserInfoKey key);
+
+    int deleteByUsernameLogic(@Param("username") String username);
+
     int insert(UserInfo record);
 
     int insertSelective(UserInfo record);
