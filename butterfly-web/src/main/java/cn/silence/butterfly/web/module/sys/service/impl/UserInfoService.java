@@ -2,6 +2,7 @@ package cn.silence.butterfly.web.module.sys.service.impl;
 
 import cn.silence.butterfly.core.exception.BizException;
 import cn.silence.butterfly.core.util.BeanPlusUtils;
+import cn.silence.butterfly.core.util.SaltMD5Utils;
 import cn.silence.butterfly.core.util.StrUtils;
 import cn.silence.butterfly.core.util.UUIDUtils;
 import cn.silence.butterfly.core.util.result.BaseResponse;
@@ -64,6 +65,7 @@ public class UserInfoService implements IUserInfoService {
             }
             UserInfo userInfo = BeanPlusUtils.copyProperties(userVO, UserInfo.class);
             userInfo.setId("ui" + UUIDUtils.generate32UUID());
+            userInfo.setPassword(SaltMD5Utils.defaultGenerateSaltPassword());
             userInfoMapper.insertSelective(userInfo);
         }
         return BaseResponse.success("Insert success");
