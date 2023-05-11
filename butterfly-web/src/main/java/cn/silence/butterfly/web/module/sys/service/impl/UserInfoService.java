@@ -71,14 +71,19 @@ public class UserInfoService implements IUserInfoService {
 
     @Override
     public BaseResponse<String> update(UserVO userVO) {
-        // TODO
-        return BaseResponse.stillDev();
+        UserInfo record = userInfoMapper.selectOneByUsername(userVO.getUsername());
+        if (record == null) {
+            throw new BizException(ErrorCode.PARAM_ERROR, "The current user does not exists!");
+        }
+        BeanPlusUtils.copyProperties(userVO, record);
+        userInfoMapper.updateByPrimaryKeySelective(record);
+        return BaseResponse.success("Update success");
     }
 
     @Override
     public BaseResponse<String> delete(String username) {
         if (!iUserCheck.isExists(username)) {
-            throw new BizException(ErrorCode.PARAM_ERROR, "The current user does not exist or has been deleted!");
+            throw new BizException(ErrorCode.PARAM_ERROR, "The current user does not exists or has been deleted!");
         }
         userInfoMapper.deleteByUsernameLogic(username);
         return BaseResponse.success("Delete success");
