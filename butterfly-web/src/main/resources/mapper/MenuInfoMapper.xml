@@ -1,75 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper
-        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.silence.butterfly.web.module.sys.mapper.MenuInfoMapper">
-
-    <resultMap id="BaseResultMap" type="cn.silence.butterfly.web.module.sys.model.entity.MenuInfo">
-            <id property="id" column="id" jdbcType="VARCHAR"/>
-            <result property="menuNo" column="menu_no" jdbcType="VARCHAR"/>
-            <result property="menuName" column="menu_name" jdbcType="VARCHAR"/>
-            <result property="sortNo" column="sort_no" jdbcType="VARCHAR"/>
-    </resultMap>
-
-    <sql id="Base_Column_List">
-        id,menu_no,menu_name,
-        sort_no
-    </sql>
-
-    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from menu_info
-        where  id = #{id,jdbcType=VARCHAR} 
-    </select>
-
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-        delete from menu_info
-        where  id = #{id,jdbcType=VARCHAR} 
-    </delete>
-    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuInfo" useGeneratedKeys="true">
-        insert into menu_info
-        ( id,menu_no,menu_name
-        ,sort_no)
-        values (#{id,jdbcType=VARCHAR},#{menuNo,jdbcType=VARCHAR},#{menuName,jdbcType=VARCHAR}
-        ,#{sortNo,jdbcType=VARCHAR})
-    </insert>
-    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuInfo" useGeneratedKeys="true">
-        insert into menu_info
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-                <if test="id != null">id,</if>
-                <if test="menuNo != null">menu_no,</if>
-                <if test="menuName != null">menu_name,</if>
-                <if test="sortNo != null">sort_no,</if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-                <if test="id != null">#{id,jdbcType=VARCHAR},</if>
-                <if test="menuNo != null">#{menuNo,jdbcType=VARCHAR},</if>
-                <if test="menuName != null">#{menuName,jdbcType=VARCHAR},</if>
-                <if test="sortNo != null">#{sortNo,jdbcType=VARCHAR},</if>
-        </trim>
-    </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuInfo">
-        update menu_info
-        <set>
-                <if test="menuNo != null">
-                    menu_no = #{menuNo,jdbcType=VARCHAR},
-                </if>
-                <if test="menuName != null">
-                    menu_name = #{menuName,jdbcType=VARCHAR},
-                </if>
-                <if test="sortNo != null">
-                    sort_no = #{sortNo,jdbcType=VARCHAR},
-                </if>
-        </set>
-        where   id = #{id,jdbcType=VARCHAR} 
-    </update>
-    <update id="updateByPrimaryKey" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuInfo">
-        update menu_info
-        set 
-            menu_no =  #{menuNo,jdbcType=VARCHAR},
-            menu_name =  #{menuName,jdbcType=VARCHAR},
-            sort_no =  #{sortNo,jdbcType=VARCHAR}
-        where   id = #{id,jdbcType=VARCHAR} 
-    </update>
+  <resultMap id="BaseResultMap" type="cn.silence.butterfly.web.module.sys.model.entity.MenuInfo">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="menu_no" jdbcType="VARCHAR" property="menuNo" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="sort_no" jdbcType="VARCHAR" property="sortNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, menu_no, menu_name, sort_no
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuInfoKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from menu_info
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuInfoKey">
+    delete from menu_info
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuInfo">
+    insert into menu_info (id, menu_no, menu_name, 
+      sort_no)
+    values (#{id,jdbcType=VARCHAR}, #{menuNo,jdbcType=VARCHAR}, #{menuName,jdbcType=VARCHAR}, 
+      #{sortNo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuInfo">
+    insert into menu_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="menuNo != null">
+        menu_no,
+      </if>
+      <if test="menuName != null">
+        menu_name,
+      </if>
+      <if test="sortNo != null">
+        sort_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="menuNo != null">
+        #{menuNo,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="sortNo != null">
+        #{sortNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuInfo">
+    update menu_info
+    <set>
+      <if test="menuNo != null">
+        menu_no = #{menuNo,jdbcType=VARCHAR},
+      </if>
+      <if test="menuName != null">
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="sortNo != null">
+        sort_no = #{sortNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.silence.butterfly.web.module.sys.model.entity.MenuInfo">
+    update menu_info
+    set menu_no = #{menuNo,jdbcType=VARCHAR},
+      menu_name = #{menuName,jdbcType=VARCHAR},
+      sort_no = #{sortNo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
 </mapper>

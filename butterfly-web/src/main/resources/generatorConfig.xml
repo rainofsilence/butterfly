@@ -46,23 +46,25 @@
         </javaTypeResolver>
 
         <!-- entity -->
-        <javaModelGenerator targetPackage="generator.entity" targetProject="src/test/java">
+        <javaModelGenerator targetPackage="cn.silence.butterfly.web.module.sys.model.entity"
+                            targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <!-- mapper -->
-        <sqlMapGenerator targetPackage="generator.mapper" targetProject="src/test/java">
+        <!-- xml -->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
-        <!-- xml -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="generator.mapper" targetProject="src/test/java">
+        <!-- mapper -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="cn.silence.butterfly.web.module.sys.mapper"
+                             targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- tableName -->
-        <table tableName="user_info" domainObjectName="UserInfo"
+        <table tableName="user_role" domainObjectName="UserRole"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"
