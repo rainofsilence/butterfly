@@ -1,4 +1,4 @@
-package cn.silence.butterfly.web.module.sys.controller;
+package cn.silence.butterfly.web.module.sys.api;
 
 import cn.silence.butterfly.core.exception.BizAssert;
 import cn.silence.butterfly.core.util.result.BaseResponse;
@@ -21,18 +21,18 @@ import java.util.List;
 @Api(tags = "Enum")
 @RestController
 @RequestMapping("/sys/enum")
-public class EnumController {
+public class EnumApi {
 
     @Resource
     private IEnumInfoService iEnumInfoService;
 
-    @ApiOperation("page")
+    @ApiOperation("enum:page")
     @PostMapping("/page")
     public BaseResponse<PageResult<EnumVO>> page(@RequestBody EnumPageRequest pageRequest) {
         return iEnumInfoService.page(pageRequest);
     }
 
-    @ApiOperation("get")
+    @ApiOperation("enum:get")
     @GetMapping("/get/{enumNo}/{itemNo}")
     public BaseResponse<EnumVO> selectOne(@PathVariable String enumNo, @PathVariable String itemNo) {
         BizAssert.notBlank(enumNo, "`enumNo` cannot be null");
@@ -40,14 +40,14 @@ public class EnumController {
         return iEnumInfoService.selectOne(enumNo, itemNo);
     }
 
-    @ApiOperation("listByEnumNo")
+    @ApiOperation("enum:listByEnumNo")
     @GetMapping("/listByEnumNo/{enumNo}")
     public BaseResponse<List<EnumVO>> selectList(@PathVariable String enumNo) {
         BizAssert.notBlank(enumNo, "`enumNo` cannot be null");
         return iEnumInfoService.selectList(enumNo);
     }
 
-    @ApiOperation("save")
+    @ApiOperation("enum:save")
     @PostMapping("/")
     public BaseResponse<String> save(@RequestBody EnumVO enumVO) {
         BizAssert.notNull(enumVO, "`param` cannot be null");
@@ -56,7 +56,7 @@ public class EnumController {
         return iEnumInfoService.insert(enumVO);
     }
 
-    @ApiOperation("update")
+    @ApiOperation("enum:update")
     @PutMapping("/")
     public BaseResponse<String> update(@RequestBody EnumVO enumVO) {
         BizAssert.notNull(enumVO, "`param` cannot be null");
@@ -65,7 +65,7 @@ public class EnumController {
         return iEnumInfoService.update(enumVO);
     }
 
-    @ApiOperation("delete")
+    @ApiOperation("enum:delete")
     @DeleteMapping("/{enumNo}/{itemNo}")
     public BaseResponse<String> delete(@PathVariable String enumNo, @PathVariable String itemNo) {
         BizAssert.notBlank(enumNo, "`enumNo` cannot be null");

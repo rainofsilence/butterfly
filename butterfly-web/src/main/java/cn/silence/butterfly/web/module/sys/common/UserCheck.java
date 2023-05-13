@@ -1,4 +1,4 @@
-package cn.silence.butterfly.web.module.sys.common.service;
+package cn.silence.butterfly.web.module.sys.common;
 
 import cn.silence.butterfly.web.module.sys.mapper.UserInfoMapper;
 import org.springframework.stereotype.Service;

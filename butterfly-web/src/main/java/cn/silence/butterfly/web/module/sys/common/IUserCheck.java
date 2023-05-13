@@ -1,4 +1,4 @@
-package cn.silence.butterfly.web.module.sys.common.service;
+package cn.silence.butterfly.web.module.sys.common;
 
 /**
  * @author rainofsilence

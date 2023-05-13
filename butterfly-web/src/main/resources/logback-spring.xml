@@ -98,14 +98,27 @@
 
         <logger name="org.springframework" level="info" additivity="false">
             <appender-ref ref="STDOUT"/>
+            <appender-ref ref="FILE"/>
         </logger>
 
         <logger name="com.zaxxer.hikari" level="info" additivity="false">
             <appender-ref ref="STDOUT"/>
+            <appender-ref ref="FILE"/>
         </logger>
 
         <logger name="springfox" level="info" additivity="false">
             <appender-ref ref="STDOUT"/>
+            <appender-ref ref="FILE"/>
+        </logger>
+
+        <logger name="io.netty" level="info" additivity="false">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="FILE"/>
+        </logger>
+
+        <logger name="io.lettuce.core" level="info" additivity="false">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref="FILE"/>
         </logger>
 
         <logger name="cn.silence.butterfly" level="debug" additivity="false">
