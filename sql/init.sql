@@ -1,23 +1,29 @@
--- init schema
+-- ==> init schema
 
 -- 用户信息表
 drop table if exists user_info;
 create table user_info
 (
-    `id`          varchar(40) not null,
-    `nickname`    varchar(100) comment '昵称',
-    `username`    varchar(100) comment '账号',
-    `password`    varchar(256) comment '密码',
-    `real_name`   varchar(100) comment '真实姓名',
-    `cert_type`   varchar(5) comment '证件类型',
-    `cert_id`     varchar(100) comment '证件号码',
-    `gender`      varchar(5) default '00' comment '性别',
-    `inuse`       tinyint(1) default 1 comment '是否启用 1:是 0:否',
-    `locked`      tinyint(1) default 0 comment '是否锁定 1:是 0:否',
-    `create_time` timestamp  default current_timestamp comment '创建时间',
-    `update_time` timestamp  default current_timestamp on update current_timestamp comment '更新时间',
-    `delete_time` timestamp  default null comment '删除时间',
-    `deleted`     tinyint(1) default 0 comment '是否删除 1:是 0:否',
+    `id`                varchar(40) not null,
+    `nickname`          varchar(100) comment '昵称',
+    `username`          varchar(100) comment '账号',
+    `password`          varchar(256) comment '密码',
+    `real_name`         varchar(100) comment '真实姓名',
+    `cert_type`         varchar(5) comment '证件类型',
+    `cert_id`           varchar(100) comment '证件号码',
+    `gender`            varchar(5) default '00' comment '性别',
+    `email`             varchar(256) comment '邮箱',
+    `phone`             varchar(40) comment '手机',
+    `landline`          varchar(40) comment '座机',
+    `signature`         varchar(256) comment '个性签名',
+    `latest_login_time` timestamp comment '最新登录时间',
+    `latest_login_ip`   varchar(200) comment '最新登录ip',
+    `inuse`             tinyint(1) default 1 comment '是否启用 1:是 0:否',
+    `locked`            tinyint(1) default 0 comment '是否锁定 1:是 0:否',
+    `create_time`       timestamp  default current_timestamp comment '创建时间',
+    `update_time`       timestamp  default current_timestamp on update current_timestamp comment '更新时间',
+    `delete_time`       timestamp  default null comment '删除时间',
+    `deleted`           tinyint(1) default 0 comment '是否删除 1:是 0:否',
     primary key (`id`)
 ) comment '用户信息表';
 create index inx_ui_username on user_info (`username`);
@@ -51,22 +57,22 @@ drop table if exists enum_info;
 create table enum_info
 (
     `id`              varchar(40) not null,
-    `parent_no`       varchar(100) comment '枚举父类编号',
-    `parent_name`     varchar(256) comment '枚举父类名称',
-    `sub_no`          varchar(100) comment '枚举子类编号',
-    `sub_name`        varchar(256) comment '枚举子类名称',
+    `enum_no`         varchar(100) comment '枚举编号',
+    `enum_name`       varchar(256) comment '枚举名称',
+    `item_no`         varchar(100) comment '枚举子类编号',
+    `item_name`       varchar(256) comment '枚举子类名称',
     `remark`          varchar(256) comment '说明',
     `sort_no`         varchar(20) default '00' comment '排序',
-    `inuse`           tinyint(1) default 1 comment '是否启用 1:是 0:否',
+    `inuse`           tinyint(1)  default 1 comment '是否启用 1:是 0:否',
     `create_username` varchar(100) comment '创建人',
     `update_username` varchar(100) comment '更新人',
     `create_time`     timestamp   default current_timestamp comment '创建时间',
     `update_time`     timestamp   default current_timestamp on update current_timestamp comment '更新时间',
     primary key (`id`)
 ) comment '枚举信息表';
-create index inx_emi_parent_no on enum_info (`parent_no`);
-create index inx_emi_sub_no on enum_info (`sub_no`);
-create index inx_emi_parent_sub_no on enum_info (`parent_no`, `sub_no`);
+create index inx_emi_eno on enum_info (`enum_no`);
+create index inx_emi_ino on enum_info (`item_no`);
+create index inx_emi_eino on enum_info (`enum_no`, `item_no`);
 
 -- 菜单表
 drop table if exists menu_info;
@@ -99,3 +105,5 @@ create table role_permission
     `mp_id`   varchar(40) not null comment '菜单权限id',
     primary key (`role_id`, `mp_id`)
 ) comment '角色权限表';
+
+-- <== init schema

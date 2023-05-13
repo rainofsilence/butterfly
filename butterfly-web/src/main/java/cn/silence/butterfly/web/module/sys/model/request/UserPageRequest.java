@@ -9,7 +9,7 @@ import io.swagger.annotations.ApiModelProperty;
  * @version 1.0.0
  * @since 2023/05/02 14:03:03
  */
-@ApiModel(value = "UserPageRequest", description = "用户管理-分页查询-入参")
+@ApiModel(value = "UserPageRequest", description = "UserPageRequest")
 public class UserPageRequest extends BasePageRequest {
     private static final long serialVersionUID = -2864857657051161175L;
 

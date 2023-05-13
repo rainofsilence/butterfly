@@ -12,9 +12,9 @@ import cn.silence.butterfly.web.module.sys.model.vo.UserVO;
  */
 public interface IUserInfoService {
 
-    BaseResponse<PageResult<UserVO>> pageList(UserPageRequest pageRequest);
+    BaseResponse<PageResult<UserVO>> page(UserPageRequest pageRequest);
 
-    BaseResponse<UserVO> getOne(String username);
+    BaseResponse<UserVO> selectOne(String username);
 
     BaseResponse<String> insert(UserVO userVO);
 

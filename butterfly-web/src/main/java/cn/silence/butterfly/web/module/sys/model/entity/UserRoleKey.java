@@ -3,48 +3,42 @@ package cn.silence.butterfly.web.module.sys.model.entity;
 import java.io.Serializable;
 
 /**
- * 角色权限表
- * @TableName role_permission
+ * UserRole.PrimaryKey
+ * 
+ * @author rainofsilence
+ * @version v1.0.0 
+ * @since 2023/05/13 14:49:48
  */
-public class RolePermission implements Serializable {
+public class UserRoleKey implements Serializable {
     /**
-     * 角色id
+     *
+     */
+    private String userId;
+
+    /**
+     *
      */
     private String roleId;
 
     /**
-     * 菜单权限id
+     * serialVersionUID
      */
-    private String mpId;
-
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 角色id
-     */
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
+    }
+
     public String getRoleId() {
         return roleId;
     }
 
-    /**
-     * 角色id
-     */
     public void setRoleId(String roleId) {
-        this.roleId = roleId;
-    }
-
-    /**
-     * 菜单权限id
-     */
-    public String getMpId() {
-        return mpId;
-    }
-
-    /**
-     * 菜单权限id
-     */
-    public void setMpId(String mpId) {
-        this.mpId = mpId;
+        this.roleId = roleId == null ? null : roleId.trim();
     }
 
     @Override
@@ -58,17 +52,17 @@ public class RolePermission implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        RolePermission other = (RolePermission) that;
-        return (this.getRoleId() == null ? other.getRoleId() == null : this.getRoleId().equals(other.getRoleId()))
-            && (this.getMpId() == null ? other.getMpId() == null : this.getMpId().equals(other.getMpId()));
+        UserRoleKey other = (UserRoleKey) that;
+        return (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
+            && (this.getRoleId() == null ? other.getRoleId() == null : this.getRoleId().equals(other.getRoleId()));
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
+        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
         result = prime * result + ((getRoleId() == null) ? 0 : getRoleId().hashCode());
-        result = prime * result + ((getMpId() == null) ? 0 : getMpId().hashCode());
         return result;
     }
 
@@ -78,8 +72,8 @@ public class RolePermission implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
+        sb.append(", userId=").append(userId);
         sb.append(", roleId=").append(roleId);
-        sb.append(", mpId=").append(mpId);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

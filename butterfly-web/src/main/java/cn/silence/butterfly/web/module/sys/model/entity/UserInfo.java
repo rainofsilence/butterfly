@@ -4,15 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 用户信息表
- * @TableName user_info
+ * 用户信息表 user_info
+ *
+ * @author rainofsilence
+ * @version 1.0.0
+ * @since 2023/05/08 00:15:37
  */
-public class UserInfo implements Serializable {
-    /**
-     * 
-     */
-    private String id;
-
+public class UserInfo extends UserInfoKey implements Serializable {
     /**
      * 昵称
      */
@@ -49,14 +47,44 @@ public class UserInfo implements Serializable {
     private String gender;
 
     /**
+     * 邮箱
+     */
+    private String email;
+
+    /**
+     * 手机
+     */
+    private String phone;
+
+    /**
+     * 座机
+     */
+    private String landline;
+
+    /**
+     * 个性签名
+     */
+    private String signature;
+
+    /**
+     * 最新登录时间
+     */
+    private Date latestLoginTime;
+
+    /**
+     * 最新登录ip
+     */
+    private String latestLoginIp;
+
+    /**
      * 是否启用 1:是 0:否
      */
-    private Integer inuse;
+    private Boolean inuse;
 
     /**
      * 是否锁定 1:是 0:否
      */
-    private Integer locked;
+    private Boolean locked;
 
     /**
      * 创建时间
@@ -76,203 +104,162 @@ public class UserInfo implements Serializable {
     /**
      * 是否删除 1:是 0:否
      */
-    private Integer deleted;
+    private Boolean deleted;
 
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * 昵称
-     */
     public String getNickname() {
         return nickname;
     }
 
-    /**
-     * 昵称
-     */
     public void setNickname(String nickname) {
-        this.nickname = nickname;
+        this.nickname = nickname == null ? null : nickname.trim();
     }
 
-    /**
-     * 账号
-     */
     public String getUsername() {
         return username;
     }
 
-    /**
-     * 账号
-     */
     public void setUsername(String username) {
-        this.username = username;
+        this.username = username == null ? null : username.trim();
     }
 
-    /**
-     * 密码
-     */
     public String getPassword() {
         return password;
     }
 
-    /**
-     * 密码
-     */
     public void setPassword(String password) {
-        this.password = password;
+        this.password = password == null ? null : password.trim();
     }
 
-    /**
-     * 真实姓名
-     */
     public String getRealName() {
         return realName;
     }
 
-    /**
-     * 真实姓名
-     */
     public void setRealName(String realName) {
-        this.realName = realName;
+        this.realName = realName == null ? null : realName.trim();
     }
 
-    /**
-     * 证件类型
-     */
     public String getCertType() {
         return certType;
     }
 
-    /**
-     * 证件类型
-     */
     public void setCertType(String certType) {
-        this.certType = certType;
+        this.certType = certType == null ? null : certType.trim();
     }
 
-    /**
-     * 证件号码
-     */
     public String getCertId() {
         return certId;
     }
 
-    /**
-     * 证件号码
-     */
     public void setCertId(String certId) {
-        this.certId = certId;
+        this.certId = certId == null ? null : certId.trim();
     }
 
-    /**
-     * 性别
-     */
     public String getGender() {
         return gender;
     }
 
-    /**
-     * 性别
-     */
     public void setGender(String gender) {
-        this.gender = gender;
+        this.gender = gender == null ? null : gender.trim();
     }
 
-    /**
-     * 是否启用 1:是 0:否
-     */
-    public Integer getInuse() {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email == null ? null : email.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
+    }
+
+    public String getLandline() {
+        return landline;
+    }
+
+    public void setLandline(String landline) {
+        this.landline = landline == null ? null : landline.trim();
+    }
+
+    public String getSignature() {
+        return signature;
+    }
+
+    public void setSignature(String signature) {
+        this.signature = signature == null ? null : signature.trim();
+    }
+
+    public Date getLatestLoginTime() {
+        return latestLoginTime;
+    }
+
+    public void setLatestLoginTime(Date latestLoginTime) {
+        this.latestLoginTime = latestLoginTime;
+    }
+
+    public String getLatestLoginIp() {
+        return latestLoginIp;
+    }
+
+    public void setLatestLoginIp(String latestLoginIp) {
+        this.latestLoginIp = latestLoginIp == null ? null : latestLoginIp.trim();
+    }
+
+    public Boolean getInuse() {
         return inuse;
     }
 
-    /**
-     * 是否启用 1:是 0:否
-     */
-    public void setInuse(Integer inuse) {
+    public void setInuse(Boolean inuse) {
         this.inuse = inuse;
     }
 
-    /**
-     * 是否锁定 1:是 0:否
-     */
-    public Integer getLocked() {
+    public Boolean getLocked() {
         return locked;
     }
 
-    /**
-     * 是否锁定 1:是 0:否
-     */
-    public void setLocked(Integer locked) {
+    public void setLocked(Boolean locked) {
         this.locked = locked;
     }
 
-    /**
-     * 创建时间
-     */
     public Date getCreateTime() {
         return createTime;
     }
 
-    /**
-     * 创建时间
-     */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    /**
-     * 更新时间
-     */
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    /**
-     * 更新时间
-     */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
-    /**
-     * 删除时间
-     */
     public Date getDeleteTime() {
         return deleteTime;
     }
 
-    /**
-     * 删除时间
-     */
     public void setDeleteTime(Date deleteTime) {
         this.deleteTime = deleteTime;
     }
 
-    /**
-     * 是否删除 1:是 0:否
-     */
-    public Integer getDeleted() {
+    public Boolean getDeleted() {
         return deleted;
     }
 
-    /**
-     * 是否删除 1:是 0:否
-     */
-    public void setDeleted(Integer deleted) {
+    public void setDeleted(Boolean deleted) {
         this.deleted = deleted;
     }
 
@@ -296,6 +283,12 @@ public class UserInfo implements Serializable {
             && (this.getCertType() == null ? other.getCertType() == null : this.getCertType().equals(other.getCertType()))
             && (this.getCertId() == null ? other.getCertId() == null : this.getCertId().equals(other.getCertId()))
             && (this.getGender() == null ? other.getGender() == null : this.getGender().equals(other.getGender()))
+            && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
+            && (this.getPhone() == null ? other.getPhone() == null : this.getPhone().equals(other.getPhone()))
+            && (this.getLandline() == null ? other.getLandline() == null : this.getLandline().equals(other.getLandline()))
+            && (this.getSignature() == null ? other.getSignature() == null : this.getSignature().equals(other.getSignature()))
+            && (this.getLatestLoginTime() == null ? other.getLatestLoginTime() == null : this.getLatestLoginTime().equals(other.getLatestLoginTime()))
+            && (this.getLatestLoginIp() == null ? other.getLatestLoginIp() == null : this.getLatestLoginIp().equals(other.getLatestLoginIp()))
             && (this.getInuse() == null ? other.getInuse() == null : this.getInuse().equals(other.getInuse()))
             && (this.getLocked() == null ? other.getLocked() == null : this.getLocked().equals(other.getLocked()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
@@ -316,6 +309,12 @@ public class UserInfo implements Serializable {
         result = prime * result + ((getCertType() == null) ? 0 : getCertType().hashCode());
         result = prime * result + ((getCertId() == null) ? 0 : getCertId().hashCode());
         result = prime * result + ((getGender() == null) ? 0 : getGender().hashCode());
+        result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
+        result = prime * result + ((getPhone() == null) ? 0 : getPhone().hashCode());
+        result = prime * result + ((getLandline() == null) ? 0 : getLandline().hashCode());
+        result = prime * result + ((getSignature() == null) ? 0 : getSignature().hashCode());
+        result = prime * result + ((getLatestLoginTime() == null) ? 0 : getLatestLoginTime().hashCode());
+        result = prime * result + ((getLatestLoginIp() == null) ? 0 : getLatestLoginIp().hashCode());
         result = prime * result + ((getInuse() == null) ? 0 : getInuse().hashCode());
         result = prime * result + ((getLocked() == null) ? 0 : getLocked().hashCode());
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
@@ -331,7 +330,6 @@ public class UserInfo implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
         sb.append(", nickname=").append(nickname);
         sb.append(", username=").append(username);
         sb.append(", password=").append(password);
@@ -339,6 +337,12 @@ public class UserInfo implements Serializable {
         sb.append(", certType=").append(certType);
         sb.append(", certId=").append(certId);
         sb.append(", gender=").append(gender);
+        sb.append(", email=").append(email);
+        sb.append(", phone=").append(phone);
+        sb.append(", landline=").append(landline);
+        sb.append(", signature=").append(signature);
+        sb.append(", latestLoginTime=").append(latestLoginTime);
+        sb.append(", latestLoginIp=").append(latestLoginIp);
         sb.append(", inuse=").append(inuse);
         sb.append(", locked=").append(locked);
         sb.append(", createTime=").append(createTime);

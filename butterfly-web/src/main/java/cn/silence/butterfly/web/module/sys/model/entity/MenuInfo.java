@@ -3,15 +3,13 @@ package cn.silence.butterfly.web.module.sys.model.entity;
 import java.io.Serializable;
 
 /**
- * 菜单信息表
- * @TableName menu_info
+ * 菜单信息表 menu_info
+ * 
+ * @author rainofsilence
+ * @version v1.0.0 
+ * @since 2023/05/13 14:46:49
  */
-public class MenuInfo implements Serializable {
-    /**
-     * 
-     */
-    private String id;
-
+public class MenuInfo extends MenuInfoKey implements Serializable {
     /**
      * 菜单编号
      */
@@ -27,62 +25,33 @@ public class MenuInfo implements Serializable {
      */
     private String sortNo;
 
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * 菜单编号
-     */
     public String getMenuNo() {
         return menuNo;
     }
 
-    /**
-     * 菜单编号
-     */
     public void setMenuNo(String menuNo) {
-        this.menuNo = menuNo;
+        this.menuNo = menuNo == null ? null : menuNo.trim();
     }
 
-    /**
-     * 菜单名称
-     */
     public String getMenuName() {
         return menuName;
     }
 
-    /**
-     * 菜单名称
-     */
     public void setMenuName(String menuName) {
-        this.menuName = menuName;
+        this.menuName = menuName == null ? null : menuName.trim();
     }
 
-    /**
-     * 排序
-     */
     public String getSortNo() {
         return sortNo;
     }
 
-    /**
-     * 排序
-     */
     public void setSortNo(String sortNo) {
-        this.sortNo = sortNo;
+        this.sortNo = sortNo == null ? null : sortNo.trim();
     }
 
     @Override
@@ -120,7 +89,6 @@ public class MenuInfo implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
         sb.append(", menuNo=").append(menuNo);
         sb.append(", menuName=").append(menuName);
         sb.append(", sortNo=").append(sortNo);
