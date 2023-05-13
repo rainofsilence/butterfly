@@ -4,15 +4,13 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 角色信息表
- * @TableName role_info
+ * 角色信息表 role_info
+ * 
+ * @author rainofsilence
+ * @version v1.0.0 
+ * @since 2023/05/13 14:43:22
  */
-public class RoleInfo implements Serializable {
-    /**
-     * 
-     */
-    private String id;
-
+public class RoleInfo extends RoleInfoKey implements Serializable {
     /**
      * 角色编号
      */
@@ -43,102 +41,55 @@ public class RoleInfo implements Serializable {
      */
     private Date updateTime;
 
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * 角色编号
-     */
     public String getRoleNo() {
         return roleNo;
     }
 
-    /**
-     * 角色编号
-     */
     public void setRoleNo(String roleNo) {
-        this.roleNo = roleNo;
+        this.roleNo = roleNo == null ? null : roleNo.trim();
     }
 
-    /**
-     * 角色名称
-     */
     public String getRoleName() {
         return roleName;
     }
 
-    /**
-     * 角色名称
-     */
     public void setRoleName(String roleName) {
-        this.roleName = roleName;
+        this.roleName = roleName == null ? null : roleName.trim();
     }
 
-    /**
-     * 排序
-     */
     public String getSortNo() {
         return sortNo;
     }
 
-    /**
-     * 排序
-     */
     public void setSortNo(String sortNo) {
-        this.sortNo = sortNo;
+        this.sortNo = sortNo == null ? null : sortNo.trim();
     }
 
-    /**
-     * 说明
-     */
     public String getRemark() {
         return remark;
     }
 
-    /**
-     * 说明
-     */
     public void setRemark(String remark) {
-        this.remark = remark;
+        this.remark = remark == null ? null : remark.trim();
     }
 
-    /**
-     * 创建时间
-     */
     public Date getCreateTime() {
         return createTime;
     }
 
-    /**
-     * 创建时间
-     */
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
     }
 
-    /**
-     * 更新时间
-     */
     public Date getUpdateTime() {
         return updateTime;
     }
 
-    /**
-     * 更新时间
-     */
     public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
@@ -184,7 +135,6 @@ public class RoleInfo implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
         sb.append(", roleNo=").append(roleNo);
         sb.append(", roleName=").append(roleName);
         sb.append(", sortNo=").append(sortNo);

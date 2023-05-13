@@ -3,15 +3,13 @@ package cn.silence.butterfly.web.module.sys.model.entity;
 import java.io.Serializable;
 
 /**
- * 菜单权限表
- * @TableName menu_permission
+ * 菜单权限表 menu_permission
+ * 
+ * @author rainofsilence
+ * @version v1.0.0 
+ * @since 2023/05/13 14:47:14
  */
-public class MenuPermission implements Serializable {
-    /**
-     * 
-     */
-    private String id;
-
+public class MenuPermission extends MenuPermissionKey implements Serializable {
     /**
      * 菜单id
      */
@@ -32,76 +30,41 @@ public class MenuPermission implements Serializable {
      */
     private String remark;
 
+    /**
+     * serialVersionUID
+     */
     private static final long serialVersionUID = 1L;
 
-    /**
-     * 
-     */
-    public String getId() {
-        return id;
-    }
-
-    /**
-     * 
-     */
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    /**
-     * 菜单id
-     */
     public String getMenuId() {
         return menuId;
     }
 
-    /**
-     * 菜单id
-     */
     public void setMenuId(String menuId) {
-        this.menuId = menuId;
+        this.menuId = menuId == null ? null : menuId.trim();
     }
 
-    /**
-     * 权限名称
-     */
     public String getPermission() {
         return permission;
     }
 
-    /**
-     * 权限名称
-     */
     public void setPermission(String permission) {
-        this.permission = permission;
+        this.permission = permission == null ? null : permission.trim();
     }
 
-    /**
-     * 排序
-     */
     public String getSortNo() {
         return sortNo;
     }
 
-    /**
-     * 排序
-     */
     public void setSortNo(String sortNo) {
-        this.sortNo = sortNo;
+        this.sortNo = sortNo == null ? null : sortNo.trim();
     }
 
-    /**
-     * 说明
-     */
     public String getRemark() {
         return remark;
     }
 
-    /**
-     * 说明
-     */
     public void setRemark(String remark) {
-        this.remark = remark;
+        this.remark = remark == null ? null : remark.trim();
     }
 
     @Override
@@ -141,7 +104,6 @@ public class MenuPermission implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
         sb.append(", menuId=").append(menuId);
         sb.append(", permission=").append(permission);
         sb.append(", sortNo=").append(sortNo);
