@@ -7,13 +7,20 @@ import java.io.Serializable;
  * 
  * @author rainofsilence
  * @version v1.0.0 
- * @since 2023/05/13 14:46:27
+ * @since 2023/05/13 20:55:09
  */
 public class EnumInfoKey implements Serializable {
     /**
      *
      */
     private String id;
+
+    public EnumInfoKey() {
+    }
+
+    public EnumInfoKey(String id) {
+        this.id = id;
+    }
 
     /**
      * serialVersionUID

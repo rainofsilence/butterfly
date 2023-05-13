@@ -37,7 +37,7 @@ public class UserInfoService implements IUserInfoService {
     private IUserCheck iUserCheck;
 
     @Override
-    public BaseResponse<PageResult<UserVO>> pageList(UserPageRequest pageRequest) {
+    public BaseResponse<PageResult<UserVO>> page(UserPageRequest pageRequest) {
         PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize());
         List<UserInfo> userInfoList = userInfoMapper.selectByUserDO(BeanPlusUtils.copyProperties(pageRequest, UserDO.class));
         PageInfo<UserInfo> userInfoPageInfo = new PageInfo<>(userInfoList);
@@ -51,7 +51,7 @@ public class UserInfoService implements IUserInfoService {
     }
 
     @Override
-    public BaseResponse<UserVO> getOne(String username) {
+    public BaseResponse<UserVO> selectOne(String username) {
         return BaseResponse.success(BeanPlusUtils.copyProperties(userInfoMapper.selectOneByUsername(username), UserVO.class));
     }
 
@@ -60,9 +60,8 @@ public class UserInfoService implements IUserInfoService {
         String username = userVO.getUsername();
         // username不能重复
         synchronized (username.intern()) {
-            if (iUserCheck.isExists(username)) {
+            if (iUserCheck.isExists(username))
                 throw new BizException(ErrorCode.PARAM_ERROR.getCode(), "The current username already exists!");
-            }
             UserInfo userInfo = BeanPlusUtils.copyProperties(userVO, UserInfo.class);
             userInfo.setId("ui" + UUIDUtils.generate32UUID());
             userInfo.setPassword(SaltMD5Utils.defaultGenerateSaltPassword());
@@ -74,9 +73,7 @@ public class UserInfoService implements IUserInfoService {
     @Override
     public BaseResponse<String> update(UserVO userVO) {
         UserInfo record = userInfoMapper.selectOneByUsername(userVO.getUsername());
-        if (record == null) {
-            throw new BizException(ErrorCode.PARAM_ERROR, "The current user does not exists!");
-        }
+        if (record == null) throw new BizException(ErrorCode.PARAM_ERROR, "The current user does not exists!");
         BeanPlusUtils.copyProperties(userVO, record);
         userInfoMapper.updateByPrimaryKeySelective(record);
         return BaseResponse.success("Update success");
@@ -84,9 +81,8 @@ public class UserInfoService implements IUserInfoService {
 
     @Override
     public BaseResponse<String> delete(String username) {
-        if (!iUserCheck.isExists(username)) {
+        if (!iUserCheck.isExists(username))
             throw new BizException(ErrorCode.PARAM_ERROR, "The current user does not exists or has been deleted!");
-        }
         userInfoMapper.deleteByUsernameLogic(username);
         return BaseResponse.success("Delete success");
     }

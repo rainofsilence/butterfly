@@ -25,20 +25,20 @@ public class UserController {
     @Resource
     private IUserInfoService iUserInfoService;
 
-    @ApiOperation(value = "list")
-    @PostMapping("/list")
-    public BaseResponse<PageResult<UserVO>> pageList(@RequestBody UserPageRequest pageRequest) {
-        return iUserInfoService.pageList(pageRequest);
+    @ApiOperation("page")
+    @PostMapping("/page")
+    public BaseResponse<PageResult<UserVO>> page(@RequestBody UserPageRequest pageRequest) {
+        return iUserInfoService.page(pageRequest);
     }
 
-    @ApiOperation(value = "getOne")
+    @ApiOperation("get")
     @GetMapping("/{username}")
     public BaseResponse<UserVO> getOne(@PathVariable String username) {
         BizAssert.notBlank(username, "username must be not null");
-        return iUserInfoService.getOne(username);
+        return iUserInfoService.selectOne(username);
     }
 
-    @ApiOperation(value = "save")
+    @ApiOperation("save")
     @PostMapping("/")
     public BaseResponse<String> save(@RequestBody UserVO userVO) {
         BizAssert.notNull(userVO, "param must be not null");
@@ -46,7 +46,7 @@ public class UserController {
         return iUserInfoService.insert(userVO);
     }
 
-    @ApiOperation(value = "update")
+    @ApiOperation("update")
     @PutMapping("/")
     public BaseResponse<String> update(@RequestBody UserVO userVO) {
         BizAssert.notNull(userVO, "param must be not null");
@@ -54,7 +54,7 @@ public class UserController {
         return iUserInfoService.update(userVO);
     }
 
-    @ApiOperation(value = "delete")
+    @ApiOperation("delete")
     @DeleteMapping("/{username}")
     public BaseResponse<String> delete(@PathVariable String username) {
         BizAssert.notBlank(username, "username must be not null");

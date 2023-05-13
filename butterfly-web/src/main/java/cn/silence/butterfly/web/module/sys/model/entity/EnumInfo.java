@@ -8,28 +8,28 @@ import java.util.Date;
  * 
  * @author rainofsilence
  * @version v1.0.0 
- * @since 2023/05/13 14:46:27
+ * @since 2023/05/13 20:55:09
  */
 public class EnumInfo extends EnumInfoKey implements Serializable {
     /**
-     * 枚举父类编号
+     * 枚举编号
      */
-    private String parentNo;
+    private String enumNo;
 
     /**
-     * 枚举父类名称
+     * 枚举名称
      */
-    private String parentName;
+    private String enumName;
 
     /**
      * 枚举子类编号
      */
-    private String subNo;
+    private String itemNo;
 
     /**
      * 枚举子类名称
      */
-    private String subName;
+    private String itemName;
 
     /**
      * 说明
@@ -71,36 +71,36 @@ public class EnumInfo extends EnumInfoKey implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-    public String getParentNo() {
-        return parentNo;
+    public String getEnumNo() {
+        return enumNo;
     }
 
-    public void setParentNo(String parentNo) {
-        this.parentNo = parentNo == null ? null : parentNo.trim();
+    public void setEnumNo(String enumNo) {
+        this.enumNo = enumNo == null ? null : enumNo.trim();
     }
 
-    public String getParentName() {
-        return parentName;
+    public String getEnumName() {
+        return enumName;
     }
 
-    public void setParentName(String parentName) {
-        this.parentName = parentName == null ? null : parentName.trim();
+    public void setEnumName(String enumName) {
+        this.enumName = enumName == null ? null : enumName.trim();
     }
 
-    public String getSubNo() {
-        return subNo;
+    public String getItemNo() {
+        return itemNo;
     }
 
-    public void setSubNo(String subNo) {
-        this.subNo = subNo == null ? null : subNo.trim();
+    public void setItemNo(String itemNo) {
+        this.itemNo = itemNo == null ? null : itemNo.trim();
     }
 
-    public String getSubName() {
-        return subName;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setSubName(String subName) {
-        this.subName = subName == null ? null : subName.trim();
+    public void setItemName(String itemName) {
+        this.itemName = itemName == null ? null : itemName.trim();
     }
 
     public String getRemark() {
@@ -172,10 +172,10 @@ public class EnumInfo extends EnumInfoKey implements Serializable {
         }
         EnumInfo other = (EnumInfo) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getParentNo() == null ? other.getParentNo() == null : this.getParentNo().equals(other.getParentNo()))
-            && (this.getParentName() == null ? other.getParentName() == null : this.getParentName().equals(other.getParentName()))
-            && (this.getSubNo() == null ? other.getSubNo() == null : this.getSubNo().equals(other.getSubNo()))
-            && (this.getSubName() == null ? other.getSubName() == null : this.getSubName().equals(other.getSubName()))
+            && (this.getEnumNo() == null ? other.getEnumNo() == null : this.getEnumNo().equals(other.getEnumNo()))
+            && (this.getEnumName() == null ? other.getEnumName() == null : this.getEnumName().equals(other.getEnumName()))
+            && (this.getItemNo() == null ? other.getItemNo() == null : this.getItemNo().equals(other.getItemNo()))
+            && (this.getItemName() == null ? other.getItemName() == null : this.getItemName().equals(other.getItemName()))
             && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
             && (this.getSortNo() == null ? other.getSortNo() == null : this.getSortNo().equals(other.getSortNo()))
             && (this.getInuse() == null ? other.getInuse() == null : this.getInuse().equals(other.getInuse()))
@@ -190,10 +190,10 @@ public class EnumInfo extends EnumInfoKey implements Serializable {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((getId() == null) ? 0 : getId().hashCode());
-        result = prime * result + ((getParentNo() == null) ? 0 : getParentNo().hashCode());
-        result = prime * result + ((getParentName() == null) ? 0 : getParentName().hashCode());
-        result = prime * result + ((getSubNo() == null) ? 0 : getSubNo().hashCode());
-        result = prime * result + ((getSubName() == null) ? 0 : getSubName().hashCode());
+        result = prime * result + ((getEnumNo() == null) ? 0 : getEnumNo().hashCode());
+        result = prime * result + ((getEnumName() == null) ? 0 : getEnumName().hashCode());
+        result = prime * result + ((getItemNo() == null) ? 0 : getItemNo().hashCode());
+        result = prime * result + ((getItemName() == null) ? 0 : getItemName().hashCode());
         result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());
         result = prime * result + ((getSortNo() == null) ? 0 : getSortNo().hashCode());
         result = prime * result + ((getInuse() == null) ? 0 : getInuse().hashCode());
@@ -210,10 +210,10 @@ public class EnumInfo extends EnumInfoKey implements Serializable {
         sb.append(getClass().getSimpleName());
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
-        sb.append(", parentNo=").append(parentNo);
-        sb.append(", parentName=").append(parentName);
-        sb.append(", subNo=").append(subNo);
-        sb.append(", subName=").append(subName);
+        sb.append(", enumNo=").append(enumNo);
+        sb.append(", enumName=").append(enumName);
+        sb.append(", itemNo=").append(itemNo);
+        sb.append(", itemName=").append(itemName);
         sb.append(", remark=").append(remark);
         sb.append(", sortNo=").append(sortNo);
         sb.append(", inuse=").append(inuse);

@@ -81,6 +81,16 @@ public class BaseResponse<T> implements Serializable {
     }
 
     /**
+     * 数据不存在返回结果 （结果枚举为 {@linkplain ErrorCode#DATA_NOT_FOUND}）
+     *
+     * @param <T> data类型
+     * @return result
+     */
+    public static <T> BaseResponse<T> dataNotFound() {
+        return of(ErrorCode.DATA_NOT_FOUND);
+    }
+
+    /**
      * 将数据对象添加进操作结果{@link BaseResponse}对象里
      *
      * @param data 数据对象

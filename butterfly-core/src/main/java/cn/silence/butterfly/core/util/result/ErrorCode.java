@@ -16,13 +16,17 @@ public enum ErrorCode implements ErrorCodeMessage {
      */
     FAILURE("400", "failure"),
     /**
+     * 资源未找到
+     */
+    NO_FOUND("404", "no found"),
+    /**
      * 参数错误
      */
     PARAM_ERROR("405", "param error"),
     /**
-     * 资源未找到
+     * 数据不存在
      */
-    NO_FOUND("404", "no found"),
+    DATA_NOT_FOUND("406", "data not found"),
     /**
      * 服务器异常（其他未知错误）
      */

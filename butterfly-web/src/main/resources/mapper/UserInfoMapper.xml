@@ -289,9 +289,14 @@
                 and `nickname` like concat(#{nickname},'%');
             </if>
         </where>
-        <if test="orderByClause!=null and orderByClause!=''">
-            order by #{orderByClause}
-        </if>
+        <choose>
+            <when test="orderByClause!=null and orderByClause!=''">
+                order by #{orderByClause}
+            </when>
+            <otherwise>
+                order by `create_time` desc
+            </otherwise>
+        </choose>
     </select>
     <select id="selectIdByUsername" resultType="java.lang.String">
         select id
