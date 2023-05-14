@@ -20,7 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 @Configuration
 public class WebMvcConfiguration extends WebMvcConfigurationSupport {
 
-    private final String[] swaggerPathPatterns = new String[]{"/doc.html", "/favicon.ico", "/error", "/swagger-resources", "/v2/api-docs"};
+    private final String[] swaggerPathPatterns = new String[]{
+            "/doc.html", "/favicon.ico", "/**/error", "/swagger-resources", "/v2/api-docs", "/webjars/**"};
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
