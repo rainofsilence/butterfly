@@ -19,7 +19,7 @@ import javax.annotation.Resource;
  */
 @Api(tags = "UserAdmin")
 @RestController
-@RequestMapping("/sys/user/admin")
+@RequestMapping("/sys/userAdmin")
 public class UserAdminApi {
 
     @Resource
