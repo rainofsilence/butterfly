@@ -15,6 +15,7 @@ import cn.silence.butterfly.web.module.sys.mapper.UserInfoMapper;
 import cn.silence.butterfly.web.module.sys.model.entity.UserInfo;
 import cn.silence.butterfly.web.module.sys.model.po.UserDO;
 import cn.silence.butterfly.web.module.sys.model.request.UserPageRequest;
+import cn.silence.butterfly.web.module.sys.model.request.UserRegister;
 import cn.silence.butterfly.web.module.sys.model.vo.UserVO;
 import cn.silence.butterfly.web.module.sys.service.IUserInfoService;
 import com.github.pagehelper.PageHelper;
@@ -22,6 +23,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,6 +42,7 @@ public class UserInfoService implements IUserInfoService {
     @Resource
     private IEnumRedisService iEnumRedisService;
 
+    //---------------------------------------------------------------------------------------------------------UserAdmin
     @Override
     public BaseResponse<PageResult<UserVO>> page(UserPageRequest pageRequest) {
         PageHelper.startPage(pageRequest.getPageNum(), pageRequest.getPageSize());
@@ -88,5 +91,38 @@ public class UserInfoService implements IUserInfoService {
             throw new BizException(ErrorCode.PARAM_ERROR, "The current user does not exists or has been deleted!");
         userInfoMapper.deleteByUsernameLogic(username);
         return BaseResponse.success("Delete success");
+    }
+
+    //--------------------------------------------------------------------------------------------------------------User
+    @Override
+    public BaseResponse<UserVO> register(UserRegister userRegister) {
+        String username = userRegister.getUsername();
+        // username不能重复
+        synchronized (username.intern()) {
+            if (iUserCheck.isExists(username))
+                throw new BizException(ErrorCode.PARAM_ERROR.getCode(), "The current username already exists!");
+            UserInfo userInfo = BeanPlusUtils.copyProperties(userRegister, UserInfo.class);
+            userInfo.setId("ui" + UUIDUtils.generate32UUID());
+            userInfo.setPassword(SaltMD5Utils.generateSaltPassword(userInfo.getPassword()));
+            userInfoMapper.insertSelective(userInfo);
+            return BaseResponse.success(BeanPlusUtils.copyProperties(userInfo, UserVO.class));
+        }
+    }
+
+    @Override
+    public BaseResponse<UserVO> login(String username, String password) {
+        UserInfo userInfo = userInfoMapper.selectOneByUsername(username);
+        if (userInfo == null) return BaseResponse.of(ErrorCode.NO_PERMISSION.getCode(), "The user does not exist!");
+        if (!SaltMD5Utils.verifySaltPassword(password, userInfo.getPassword())) {
+            return BaseResponse.of(ErrorCode.NO_PERMISSION.getCode(), "The password is incorrect!");
+        }
+        return BaseResponse.success(BeanPlusUtils.copyProperties(userInfo, UserVO.class));
+    }
+
+    @Override
+    public BaseResponse<Boolean> isLogin(HttpSession httpSession) {
+        Object userToken = httpSession.getAttribute("userToken");
+        return BaseResponse.success(userToken != null);
+
     }
 }

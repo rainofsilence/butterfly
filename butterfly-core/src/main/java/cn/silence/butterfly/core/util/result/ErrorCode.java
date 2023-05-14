@@ -40,7 +40,7 @@ public enum ErrorCode implements ErrorCodeMessage {
      */
     UTIL_ERROR("577", "util error"),
     /**
-     * 工具类错误
+     * 服务还在开发中
      */
     SERVICE_STILL_DEV("578", "service still dev"),
     ;

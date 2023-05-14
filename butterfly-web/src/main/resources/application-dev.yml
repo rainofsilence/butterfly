@@ -16,6 +16,11 @@ spring:
         max-idle: 16
         max-active: 32
         min-idle: 8
+  session:
+    store-type: redis
+    timeout: 600 # 600秒
+    redis:
+      namespace: butterfly:session
 mybatis:
   mapper-locations: classpath*:mapper/**/*Mapper.xml
   configuration:
